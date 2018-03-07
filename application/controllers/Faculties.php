@@ -36,6 +36,7 @@ class Faculties extends CI_Controller {
             show_404();
         }
         $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-faculty');
         $this->load->view('faculty/dashboard', $data);
     }
 
@@ -51,6 +52,7 @@ class Faculties extends CI_Controller {
             show_404();
         }
         $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-faculty');
         $this->load->view('faculty/subjects', $data);
     }
 
@@ -83,6 +85,7 @@ class Faculties extends CI_Controller {
             show_404();
         }
         $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-faculty');
         $this->load->view('faculty/subjectlist', $data);
     }
 
@@ -98,6 +101,7 @@ class Faculties extends CI_Controller {
             show_404();
         }
         $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-faculty');
         $this->load->view('faculty/sectionlist', $data);
 
     }
@@ -114,6 +118,7 @@ class Faculties extends CI_Controller {
             show_404();
         }
         $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-faculty');
         $this->load->view('faculty/studentlist', $data);
     }
 

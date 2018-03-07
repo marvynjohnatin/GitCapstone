@@ -50,6 +50,12 @@ $route['accounting/account'] = 'accountings/account';
 $route['accounting/payment'] = 'accountings/payment';
 //========================================================================>
 
+//SystemAdmin Routes
+$route['systemadmin/studentlist'] = 'systemadmins/studentlist';
+$route['systemadmin/yearlist'] = 'systemadmins/yearlist';
+$route['systemadmin/sectionlist'] = 'systemadmins/sectionlist';
+//========================================================================>
+
 //Admission Routes
 $route['admission/addstudent'] = 'admissions/viewcreatestudent';
 $route['admission/create'] = 'admissions/createstudent';

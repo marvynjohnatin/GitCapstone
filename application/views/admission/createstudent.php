@@ -175,7 +175,7 @@
 
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" name="contactno" placeholder="Ex: 09XXXXXXXXX">
+                                        <input type="text" pattern="[0-9]{11}" name="contactno" placeholder="Ex: 09XXXXXXXXX" class = "form-control">
                                     </div>
                                 </div>
 
@@ -186,24 +186,16 @@
                                 </div>
 
 
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <select name="level" id="levelSel" class="form-control show-tick">
-                                            <option value="" selected="selected">Select Level</option>
-                                        </select>
-                                    </div>
+                                <div class="row clearfix">
+                                <div class="col-sm-12">
+                                <select name="optone" id="Level" class="form-control show-tick">
+                                    <option value="" selected="selected">Select Level</option>
+                                </select>
+                                <br>
+                                <select name="opttwo" id="Grade" class="form-control show-tick">
+                                    <option value="" selected="selected">Select Grade </option>
+                                </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <select name="year" id="yearSel" class="form-control show-tick">
-                                            <option value="" selected="selected">Select Grade </option>
-                                        </select>
-
-                                        <select name="optthree" id="dummySel" hidden>
-                                            <option value="" selected="selected"></option>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -251,7 +243,7 @@
 
                                 <div class="form-group">
                                   <div class="form-line">
-                                      <input type="text" pattern="[0-9]{11}" name="fathercontactno" placeholder="Ex: 09XXXXXXXXX">
+                                      <input type="text" pattern="[0-9]{11}" name="fathercontactno" placeholder="Contact: 09XXXXXXXXX" class = "form-control">
                                   </div>
                                 </div>
 
@@ -304,7 +296,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" name="mothercontactno" placeholder="Ex: 09XXXXXXXXX">
+                                        <input type="text" pattern="[0-9]{11}" name="mothercontactno" placeholder="Contact: 09XXXXXXXXX" class = "form-control">
                                     </div>
                                 </div>
 
@@ -361,7 +353,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" name="guardiancontactno" placeholder="Ex: 09XXXXXXXXX">
+                                        <input type="text" pattern="[0-9]{11}" name="guardiancontactno" placeholder="Ex: 09XXXXXXXXX" class = "form-control">
                                     </div>
                                 </div>
 
@@ -458,7 +450,7 @@
 
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" pattern="[0-9]{11}" name="accountcontactno" class="form-control email" placeholder="Ex: 099999999999" disabled>
+                                    <input type="text" pattern="[0-9]{11}" name="accountcontactno" class="form-control email" placeholder="Contact: 099999999999" disabled>
                                 </div>
                             </div>
 
@@ -521,55 +513,53 @@
 </section>
 <?php echo form_close()?>
 <script>
-    var stateObject = {
-        "Elementary": {
-            "Grade 1": [],
-            "Grade 2": [],
-            "Grade 3": [],
-            "Grade 4": [],
-            "Grade 5": [],
-            "Grade 6": []
-        },
+    var levelObject = {
+    "Elementary": {
+        "Grade 1": [],
+        "Grade 2": [],
+        "Grade 3": [],
+        "Grade 4": [],
+        "Grade 5": [],
+        "Grade 6": []
+    },
 
-        "Highschool": {
-            "Grade 7": [],
-            "Grade 8": [],
-            "Grade 9": [],
-            "Grade 10": []
-        },
+    "Highschool": {
+        "Grade 7": [],
+        "Grade 8": [],
+        "Grade 9": [],
+        "Grade 10": []
+    },
 
-        "Senior Highschool": {
-            "Grade 11": [],
-            "Grade 12": []
-
-        },
-
+    "Senior Highschool": {
+        "Grade 11": [],
+        "Grade 12": []
+       
+    },
+   
+}
+window.onload = function () {
+    var Level = document.getElementById("Level"),
+        Grade = document.getElementById("Grade"),
+        variable = document.getElementById("variable");
+    for (var level in levelObject) {
+        Level.options[Level.options.length] = new Option(level, level);
     }
-    window.onload = function () {
-        var levelSel = document.getElementById("levelSel"),
-            yearSel = document.getElementById("yearSel"),
-            dummySel = document.getElementById("dummySel");
-        for (var level in stateObject) {
-            levelSel.options[levelSel.options.length] = new Option(level, level);
-        }
-        levelSel.onchange = function () {
-            yearSel.length = 1; // remove all options bar first
-            dummySel.length = 1; // remove all options bar first
-            if (this.selectedIndex < 1) return; // done
-            for (var year in stateObject[this.value]) {
-                yearSel.options[yearSel.options.length] = new Option(year, year);
-            }
-        }
-        levelSel.onchange(); // reset in case page is reloaded
-        yearSel.onchange = function () {
-            dummySel.length = 1; // remove all options bar first
-            if (this.selectedIndex < 1) return; // done
-            var dummies = stateObject[levelSel.value][this.value];
-            for (var i = 0; i < dummies.length; i++) {
-                dummySel.options[dummySel.options.length] = new Option(dummies[i], dummies[i]);
-            }
+    Level.onchange = function () {
+        Grade.length = 1; // remove all options bar first
+        
+        if (this.selectedIndex < 1) return; // done   
+        for (var grade in levelObject[this.value]) {
+            Grade.options[Grade.options.length] = new Option(grade, grade);
         }
     }
+    Level.onchange(); // reset in case page is reloaded
+    Grade.onchange = function () {
+        
+        if (this.selectedIndex < 1) return; // done   
+        var cities = levelObject[Level.value][this.value];
+        
+    }
+}
 
 </script>
 

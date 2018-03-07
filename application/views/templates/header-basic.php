@@ -35,8 +35,7 @@
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="<?php echo base_url();?>assets-2/css/themes/all-themes.css" rel="stylesheet" />
 
-        <!-- Bootstrap Select Css -->
-        <link href="<?php echo base_url();?>assets-2/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
 
         <!-- Jquery Core Js -->
         <script src="<?php echo base_url();?>assets-2/plugins/jquery/jquery.min.js"></script>
@@ -44,8 +43,7 @@
         <!-- Bootstrap Core Js -->
         <script src="<?php echo base_url();?>assets-2/plugins/bootstrap/js/bootstrap.js"></script>
 
-        <!-- Select Plugin Js -->
-        <script src="<?php echo base_url();?>assets-2/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+      
 
         <!-- Slimscroll Plugin Js -->
         <script src="<?php echo base_url();?>assets-2/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
