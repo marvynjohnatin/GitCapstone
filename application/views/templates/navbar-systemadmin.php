@@ -32,7 +32,7 @@
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <img src="<?php echo base_url(); ?>assets-2/images/sja.png" width="40" height="50" alt="User" />
-                <a class="navbar-brand" href="index.html">SJA ACADEMY STUDENT PORTAL</a>
+                <a class="navbar-brand" href="index.html">SJA ACADEMY MANAGEMENT PORTAL</a>
             </div>
           <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

@@ -54,6 +54,7 @@ $route['accounting/payment'] = 'accountings/payment';
 $route['systemadmin/studentlist'] = 'systemadmins/studentlist';
 $route['systemadmin/yearlist'] = 'systemadmins/yearlist';
 $route['systemadmin/sectionlist'] = 'systemadmins/sectionlist';
+$route['systemadmin/subjects'] = 'systemadmins/subjects';
 //========================================================================>
 
 //Admission Routes
