@@ -12,6 +12,7 @@ class Admissions extends CI_Controller {
         $this->load->view('admission/createstudent',$data);
     }
 
+
     public function createstudent()
     {
         if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Admission'){
@@ -35,7 +36,6 @@ class Admissions extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
             $post_image = $_FILES['userfile']['name'];
         }
-
         $this->admission_model->createstudent($post_image);
         redirect('admission/addstudent');
     }
@@ -46,47 +46,28 @@ class Admissions extends CI_Controller {
             die('Please log in');
         }
             $data['account'] = $this->admission_model->getuserdetails($this->session->userdata['user_id']);
-            $data['results'] = $this->admission_model->getpendingstudents();
-            $this->load->view('templates/header-basic');
-            $this->load->view('admission/activatestudent', $data);
-    }
-
-    public function activate($offset = 0)
-    {
-        if(!isset($this->session->userdata['logged_in']) && $this->session->userdata['accounttype'] != 'Admission'){
-            die('Please log in');
-        }
-        if(!isset($this->session->userdata['studentid'])) {
-            $studentid = $this->input->post('studentid');
-            $user_data = array(
-                'studentid' => $studentid
-            );
-            $this->session->set_userdata($user_data);
-        }
-        if(!isset($this->session->userdata['studentid']))
-        {
-            redirect('admission/activatestudent');
-        }
         $search = $this->input->get('search');
-        $config['base_url'] =base_url("admissions/activate/");
+        $config['base_url'] =base_url("admissions/activatestudent/");
         $config['per_page'] = 10;
         $config['uri_segment'] = 3;
         $config['attributes'] = array('class' => 'pagination-link');
+        $data['searchbar'] = $this->admission_model->getpendingstudents();
+
         if(!isset($search)) {
-            $config['total_rows'] = $this->admission_model->numberofparents();
+            $config['total_rows'] = $this->admission_model->numberpending();
             $this->pagination->initialize($config);
-            $data['results'] = $this->admission_model->getparents($config['per_page'],$offset);
-            $this->load->view('templates/header');
-            $this->load->view('admission/activate', $data);
+            $data['results'] = $this->admission_model->getpendingstudents($config['per_page'],$offset);
+            $this->load->view('templates/header-basic');
+            $this->load->view('admission/activatestudent', $data);
         }
         else{
             if (count($_GET) > 0) $config['suffix'] = '?' . http_build_query($_GET, '', "&");
             $config['first_url'] = $config['base_url'].'?'.http_build_query($_GET);
-            $config['total_rows'] = $this->admission_model->numbersearchedparent($search);
+            $config['total_rows'] = $this->admission_model->numbersearched($search);
             $this->pagination->initialize($config);
-            $data['results'] = $this->admission_model->getsearchedparent($search,$config['per_page'],$offset);
-            $this->load->view('templates/header');
-            $this->load->view('admission/activate', $data);
+            $data['results'] = $this->admission_model->getsearchedstudents($search,$config['per_page'],$offset);
+            $this->load->view('templates/header-basic');
+            $this->load->view('admission/activatestudent', $data);
         }
     }
 
@@ -94,12 +75,13 @@ class Admissions extends CI_Controller {
         if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Admission'){
             die('Please log in');
         }
-        $parentid = $this->input->post('parentid');
-        $studentid = $this->session->userdata['studentid'];
-        if(!isset($parentid))
-        {
-            redirect('admission/activatestudent');
-        }
+        $studentid = $this->input->post('studentid');
+
+        //Get Parent Id
+        $this->db->select('parentid');
+        $this->db->where('Id',$studentid);
+        $parentdetails =$this->db->get('student')->result_array();
+        $parentid= $parentdetails[0]['parentid'];
         $data['parent'] = $this->admission_model->getparentactivation($parentid);
         $data['student'] = $this->admission_model->getstudentactivation($studentid);
         $ch = curl_init();
@@ -108,7 +90,7 @@ class Admissions extends CI_Controller {
         'number' => $data['parent'][0]['contactno'],
         'message' => 'Your account is now activated! Credentials For your account is Username:'.$data['parent'][0]['username'].' Password:'.
                       $data['parent'][0]['password']. ' and for '. $data['student'][0]['fname'].' Username:'. $data['student'][0]['studentnumber'].
-                      ' Password: '. $data['student'][0]['password']. ' Log in at localhost/Capstone1/login',
+                      ' Password: '. $data['student'][0]['password']. ' Log in at localhost/GitCapstone/login',
         'sendername' => 'SJACADEMY'
         );
         curl_setopt( $ch, CURLOPT_URL,'http://api.semaphore.co/api/v4/messages' );
@@ -126,8 +108,9 @@ class Admissions extends CI_Controller {
         if($status = 'Pending')
         {
             $this->admission_model->activatestudentrecord($studentid);
-            die('Success!');
         }
+
+        redirect('admission/activatestudent');
     }
 
 }

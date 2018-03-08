@@ -36,7 +36,7 @@
          
           <span class="login100-form-title p-b-43">
             
-            <b><font color = red>Registrar</font></b>
+            <b><font color = red>Login</font></b>
           </span>
 
 

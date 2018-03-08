@@ -35,15 +35,14 @@
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="<?php echo base_url();?>assets-2/css/themes/all-themes.css" rel="stylesheet" />
 
-
+        <!-- Moment Plugin Js -->
+        <script src="<?php echo base_url();?>assets-2/plugins/momentjs/moment.js"></script>
 
         <!-- Jquery Core Js -->
         <script src="<?php echo base_url();?>assets-2/plugins/jquery/jquery.min.js"></script>
 
         <!-- Bootstrap Core Js -->
         <script src="<?php echo base_url();?>assets-2/plugins/bootstrap/js/bootstrap.js"></script>
-
-      
 
         <!-- Slimscroll Plugin Js -->
         <script src="<?php echo base_url();?>assets-2/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
@@ -73,7 +72,7 @@
 
         <!-- Custom Js -->
         <script src="<?php echo base_url();?>assets-2/js/admin.js"></script>
-
+        <script src="<?php echo base_url();?>assets-2/js/pages/forms/basic-form-elements.js"></script>
         <script src="<?php echo base_url();?>assets-2/js/pages/tables/jquery-datatable.js"></script>
         <!-- Demo Js -->
         <script src="<?php echo base_url();?>assets-2/js/demo.js"></script>

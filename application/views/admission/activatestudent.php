@@ -51,7 +51,7 @@
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a href="<?php echo base_url()?>user/logout"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -109,8 +109,12 @@
                         </h2>
                     </div>
                     <div class="body">
+
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <form action="<?php echo base_url()?>admission/activatestudent">
+                                        Search:<input type="text" id="search" name="search">&nbsp;&nbsp;<button type="submit" class="btn btn-success" ><i class="icon-search icon-large"></i>&nbsp;</button>
+                            </form>
+                            <table class="table table-bordered table-striped table-hover dataTable">
                                 <thead>
                                 <tr>
                                     <th>Student No.</th>
@@ -127,7 +131,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php echo form_open('admission/activatestudent')?>
+                                <?php echo form_open('admission/activatestudent/activating')?>
                                 <?php foreach($results as $student) : ?>
                                 <tr>
                                     <td><?php echo $student['studentnumber'] ?></td>
@@ -140,12 +144,15 @@
                                     <td><?php echo $student['address'] ?></td>
                                     <td><?php echo $student['current_level'] ?></td>
                                     <td><?php echo $student['current_year'] ?></td>
-                                    <td><button class="btn bg-brown waves-effect" type="" name="studentid" value="<?php echo $student['Id'] ?>">Activate </button></td>
+                                    <td><div><button type="submit" name="studentid" value="<?php echo $student['Id'] ?>">Activate </button></div></td>
                                 </tr>
                                 <?php endforeach;?>
                                 </form>
                                 </tbody>
                             </table>
+                            <div class="pagination-links">
+                                <?php echo $this->pagination->create_links(); ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,5 +164,19 @@
 </section>
 
 </body>
+<script>
+    $( function() {
+        var availableTags = [
+            <?php foreach ($searchbar as $student):?>
+            <?php echo "'".$student['studentnumber'].$student['lname']."'".','?>
+            <?php endforeach;?>
+            ''
+        ];
+        $( "#search" ).autocomplete({
+            source: availableTags
+        });
+    } );
+    //javascript
+</script>
 
 </html>

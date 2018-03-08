@@ -3,7 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //Webpage Route (Dynamic)
 $route['test'] = 'portals/test';
+//login of Users
 $route['loginuser'] = 'logins/login';
+$route['user/logout'] = 'logins/logout';
 //========================================================================>
 //Student Portal Routes
 $route['portals/dashboard'] = 'portals/view';
@@ -54,7 +56,6 @@ $route['accounting/payment'] = 'accountings/payment';
 $route['systemadmin/studentlist'] = 'systemadmins/studentlist';
 $route['systemadmin/yearlist'] = 'systemadmins/yearlist';
 $route['systemadmin/sectionlist'] = 'systemadmins/sectionlist';
-$route['systemadmin/subjects'] = 'systemadmins/subjects';
 //========================================================================>
 
 //Admission Routes

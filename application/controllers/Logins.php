@@ -39,11 +39,12 @@ class Logins extends CI_Controller {
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('accounttype');
+        $this->session->unset_userdata('fname');
 
         //message for logging out
         $this->session->set_flashdata('logged_out','You account has been logged out!');
         //redirect to login
-        redirect('registrar/login');
+        redirect('loginuser');
     }
 }

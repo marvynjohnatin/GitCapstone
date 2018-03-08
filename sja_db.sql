@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2018 at 09:28 AM
+-- Generation Time: Mar 08, 2018 at 02:40 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -72,23 +72,9 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`Id`, `fname`, `lname`, `mname`, `address`, `contactno`, `email`, `username`, `password`) VALUES
-(1, 'Gab', 'Jornacion', 'Ocampo', 'Makati', '09154095632', 'gabjornacion@gmail.com', 'gabjornacion', 'parentdefault'),
-(2, 'Rennier', 'Cuevas', 'Tongol', 'Tambo', '09154095632', 'renniercuevas@gmail.com', 'renniercuevas', 'parentdefault'),
-(3, 'Cha', 'Ocampo', 'Baes', 'Ortigas', '09154095632', 'chaocampo@gmail.com', 'chaocampo', 'parentdefault'),
-(4, 'Mariel', 'Marasigan', 'Magpantay', 'Lodlod', '09153011276', 'marielmarasigan@gmail.com', 'marielmarasigan', 'parentdefault'),
-(5, 'Jethro', 'Bautro', 'Aranda', 'Ibaan', '09154095632', 'jethrobautro@gmail.com', 'jethrobautro', 'parentdefault'),
-(6, 'Jhanie', 'Aranda', 'Matala', 'Narkabowl', '09154095632', 'jhaniearanda@gmail.com', 'jhaniearanda', 'parentdefault'),
-(7, 'Kai', 'Alvez', 'Mahinay', 'Sinagtala', '09154095632', 'kaialvez@gmail.com', 'kaialvez', 'parentdefault'),
-(8, 'Chloe', 'Adorna', 'Agape', 'Lemery', '09154095632', 'chloeadorna@gmail.com', 'chloeadorna', 'parentdefault'),
-(9, 'Bea', 'Perez', 'Quiamco', 'Pasig', '09154095632', 'beaperez@gmail.com', 'beaperez', 'parentdefault'),
-(10, 'Kathleen', 'Obusan', 'Perez', 'Pasay', '09154095632', 'kathleenobusan@gmail.com', 'kathleenobusan', 'parentdefault'),
-(11, 'Mary', 'Angelee', 'Marin', 'Palawan', '09154095632', 'maryangelee@gmail.com', 'maryangelee', 'parentdefault'),
-(12, 'Julienna', 'Villarba', 'Cruz', 'Tanauan', '09154095632', 'juliennavillarba@gmail.com', 'juliennavillarba', 'parentdefault'),
-(13, 'Kat', 'Valdez', 'Castillo', 'Roxas', '09154095632', 'katvaldez@gmail.com', 'katvaldez', 'parentdefault'),
-(14, 'Elisea', 'Mantuano', 'Jenner', 'New York', '09154095632', 'eliseamantuano@gmail.com', 'eliseamantuano', 'parentdefault'),
-(15, 'Chiara', 'Permentilla', 'Lalunio', 'Talisay', '09154095632', 'chiarapermentilla@gmail.com', 'chiarapermentilla', 'parentdefault'),
-(16, 'Rachel', 'Zapanta', 'Enriquez', 'Sabang', '09154095632', 'rachelzapanta@gmail.com', 'rachelzapanta', 'parentdefault'),
-(17, 'Gabbi', 'Garcia', 'Ilagan', 'Colorado', '09154095632', 'gabbigarcia@gmail.com', 'gabbigarcia', 'parentdefault');
+(1, 'Mario', 'Atin', '', '', '09154095632', 'mario@gmail.com', 'marioatin', 'itsmorefunatsja'),
+(2, 'Mario', 'Atin', '', '', '09154095632', 'mario@gmail.com', 'marioatin1', 'itsmorefunatsja'),
+(3, 'Obito', 'Rin', 'Dela Cruz', '', '09154095632', 'obitodelacruz@gmail.com', 'obitorin', 'itsmorefunatsja');
 
 -- --------------------------------------------------------
 
@@ -125,51 +111,51 @@ CREATE TABLE `student` (
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `mname` text NOT NULL,
-  `age` varchar(50) NOT NULL,
-  `dateofbirth` varchar(50) NOT NULL,
+  `age` text NOT NULL,
+  `dateofbirth` text NOT NULL,
   `gender` text NOT NULL,
   `address` text NOT NULL,
   `placeofbirth` text NOT NULL,
-  `contactno` varchar(50) NOT NULL,
-  `parentid` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `current_level` varchar(50) NOT NULL,
-  `current_year` varchar(50) NOT NULL,
+  `contactno` text NOT NULL,
+  `parentid` text NOT NULL,
+  `email` text NOT NULL,
+  `current_level` text NOT NULL,
+  `current_year` text NOT NULL,
   `current_section` text NOT NULL,
   `status_enrolled` text NOT NULL,
-  `stud_pic` varchar(200) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `stud_pic` text NOT NULL,
+  `examgrade` text NOT NULL,
+  `examremark` text NOT NULL,
+  `password` text NOT NULL,
   `account_status` text NOT NULL,
-  `fatherfname` varchar(50) NOT NULL,
-  `fathermname` varchar(50) NOT NULL,
-  `fatherlname` varchar(50) NOT NULL,
-  `fatheroccupation` varchar(50) NOT NULL,
-  `fathercontactno` varchar(50) NOT NULL,
-  `fatheremail` varchar(255) NOT NULL,
-  `motherfname` varchar(50) NOT NULL,
-  `mothermname` varchar(50) NOT NULL,
-  `motherlname` varchar(50) NOT NULL,
-  `motheroccupation` varchar(50) NOT NULL,
-  `mothercontactno` varchar(50) NOT NULL,
-  `motheremail` varchar(255) NOT NULL,
-  `guardianfname` varchar(50) NOT NULL,
-  `guardianmname` varchar(50) NOT NULL,
-  `guardianlname` varchar(50) NOT NULL,
-  `guardiancontactno` varchar(50) NOT NULL,
-  `guardianemail` varchar(255) NOT NULL
+  `fatherfname` text NOT NULL,
+  `fathermname` text NOT NULL,
+  `fatherlname` text NOT NULL,
+  `fatheroccupation` text NOT NULL,
+  `fathercontactno` text NOT NULL,
+  `fatheremail` text NOT NULL,
+  `motherfname` text NOT NULL,
+  `mothermname` text NOT NULL,
+  `motherlname` text NOT NULL,
+  `motheroccupation` text NOT NULL,
+  `mothercontactno` text NOT NULL,
+  `motheremail` text NOT NULL,
+  `guardianfname` text NOT NULL,
+  `guardianmname` text NOT NULL,
+  `guardianlname` text NOT NULL,
+  `guardiancontactno` text NOT NULL,
+  `guardianemail` text NOT NULL,
+  `guardianoccupation` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `parentid`, `email`, `current_level`, `current_year`, `current_section`, `status_enrolled`, `stud_pic`, `password`, `account_status`, `fatherfname`, `fathermname`, `fatherlname`, `fatheroccupation`, `fathercontactno`, `fatheremail`, `motherfname`, `mothermname`, `motherlname`, `motheroccupation`, `mothercontactno`, `motheremail`, `guardianfname`, `guardianmname`, `guardianlname`, `guardiancontactno`, `guardianemail`) VALUES
-(22, '2014152701', 'Marvyn', 'Atin', 'Casao', '20', 'November 16, 1997', 'Male', 'Tulay Ibaan Batangas', 'Putatan Muntinlupa CIty', '09154095632', '', 'marvynjohnatin@gmail.com', 'HighSchool', '4', 'St. Joseph', 'YES', 'noimage.jpg', 'password123', 'Pending', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(37, '20143700', 'Muffy', 'Atin', 'Casao', '8', 'April 1 2000', 'Male', 'Tulay', 'Muntinlupa', '09154095632', '', 'muffy@gmail.com', 'Elementary', '3', '', '', 'noimage.jpg', 'itsmorefuninsja', 'Pending', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(38, '20113800', 'Jakko', 'Casao', 'Atin', '3', 'August 16 1996', 'Male', 'Tulay', 'Muntinlupa', '09154095632', '', 'jakko@gmail.com', 'Elementary', '6', '', '', 'noimage.jpg', '', 'Pending', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(39, '20133900', 'Muddog', 'Atin', 'Casao', '5', 'asd', 'Male', 'asd', 'Nov 16 1997', '09154095632', '', 'maddog@gmail.com', 'Elementary', '5', '', 'No', 'noimage.jpg', '', 'Pending', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(40, '20104000', 'Iris', 'Tanyag', 'Lapuk', '20', 'asdasd', 'Faggot', 'Gay club', 'ASshole', '09153011276', '', 'iristanyag@gmailc.om', 'Elementary', '2', '', 'No', 'noimage.jpg', 'iris9015', 'Pending', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(41, '20144100', 'Ledayl', 'Maralit', 'Corachea', '19', 'June 8 1998', 'Female', 'Pangao, Ibaan, Batangas', 'Ibaan', '09154095632', '', 'ledaylmaralit@yahoo.com', 'Central', '3', '', 'No', 'noimage.jpg', 'itsmorefunatsja', 'Pending', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `parentid`, `email`, `current_level`, `current_year`, `current_section`, `status_enrolled`, `stud_pic`, `examgrade`, `examremark`, `password`, `account_status`, `fatherfname`, `fathermname`, `fatherlname`, `fatheroccupation`, `fathercontactno`, `fatheremail`, `motherfname`, `mothermname`, `motherlname`, `motheroccupation`, `mothercontactno`, `motheremail`, `guardianfname`, `guardianmname`, `guardianlname`, `guardiancontactno`, `guardianemail`, `guardianoccupation`) VALUES
+(1, '20151000', 'Marvyn John', 'Atin', 'Casao', '20', '1997-11-16', 'Male', 'Tulay, Ibaan, Batangas', 'Putatan Muntinlupa City', '09154095632', '1', 'marvynjohnatin@gmail.com', 'Highschool', '2015', '', 'No', '1451500_700507843300899_1312591366_n.jpg', 'Pending', 'PASS', 'password123', 'Activated', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evelyn', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'Elena', 'Casao', 'Casao', '09154095632', 'elena@email', 'Housewife'),
+(2, '20142000', 'Shuka', 'Saito', 'Atin', '23', '1995-08-16', 'Female', 'Tokyo Japan', 'Tokyo ', '09154095632', '2', 'shuka@gmail.com', 'Highschool', '2014', '', 'No', 'jKNYHT7OruzGCQdm9BZBoOej-thumbnail-00001.png', 'Pending', 'PASS', 'itsmorefunatsja', 'First', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evely', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'asd', 'asd', 'asd', '09154095632', 'asd@aasd', 'asd'),
+(3, '20003000', 'Itachi', 'Uchiha', 'Uzumaki', '20', '2018-03-08', 'Male', 'Konoha', 'Uchiha Village', '09154095632', '3', 'marvynjohnatin@gmail.com', 'Senior Highschool', '2000', '', 'No', '1450986_700508009967549_581890431_n.jpg', 'Pending', 'PASS', 'itsmorefunatsja', 'Pending', 'Obito', 'Dela Cruz', 'Rin', 'Plumber', '09154095632', 'obitodelacruz@gmail.com', 'Sam', 'Sakura', 'Kurenai', 'Nurse', '09154095632', 'rinsakura@gmail.com', 'Shin', 'Jang', 'Oppei', '09154095632', 'shinjang@gmail.com', 'Teacher');
 
 -- --------------------------------------------------------
 
@@ -179,23 +165,24 @@ INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, 
 
 CREATE TABLE `subjects` (
   `subject_ID` int(11) NOT NULL,
-  `teacher_ID` varchar(50) NOT NULL,
+  `subject_code` varchar(50) NOT NULL,
   `subject_name` text NOT NULL,
   `subject_level` text NOT NULL,
-  `subject_grade` text NOT NULL,
-  `coordinator` text NOT NULL,
-  `subject_schedule` text NOT NULL,
-  `subject_time` text NOT NULL
+  `subject_year` text NOT NULL,
+  `subject_course` varchar(100) NOT NULL,
+  `coordinator` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`subject_ID`, `teacher_ID`, `subject_name`, `subject_level`, `subject_grade`, `coordinator`, `subject_schedule`, `subject_time`) VALUES
-(5, '', 'Algebra 1', 'Highschool', 'Grade 7', 'Edmar Silva A. Dimaano', 'Monday to Friday', '7:00 A.M. - 8:00 A.M.'),
-(6, '', 'English 1', 'Highschool', 'Grade 7', 'Sheng G. Villanueva', 'Monday to Friday', '9:00 A.M. - 10:00 A.M.'),
-(7, '', 'Filipino 1', 'Highschool', 'Grade 7', 'Mhar A. Barza', 'Monday to Friday', '11:00 A.M. - 12:00 A.M.');
+INSERT INTO `subjects` (`subject_ID`, `subject_code`, `subject_name`, `subject_level`, `subject_year`, `subject_course`, `coordinator`) VALUES
+(5, '', 'Algebra 1', 'Highschool', 'Grade 7', '', 'Edmar Silva A. Dimaano'),
+(6, '', 'English 1', 'Highschool', 'Grade 7', '', 'Sheng G. Villanueva'),
+(7, '', 'Filipino 1', 'Highschool', 'Grade 7', '', 'Mhar A. Barza'),
+(8, '', 'asd', 'Senior Highschool', 'Grade 12', '', 'asd'),
+(9, '', 'asd', 'Senior Highschool', 'Grade 12', '', 'asd');
 
 -- --------------------------------------------------------
 
@@ -311,7 +298,7 @@ ALTER TABLE `announcements`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -323,13 +310,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `teacher`
