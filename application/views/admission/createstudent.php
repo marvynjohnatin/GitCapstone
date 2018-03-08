@@ -131,18 +131,20 @@
                                         <input type="text" class="form-control" placeholder="Last name" name="lname" />
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <select class="form-control show-tick" name="admission">
-                                            <option value="">Year of Admission</option>
-                                            <?php
+
+                                <div class="row clearfix">
+                                <div class="col-sm-12">
+                                <select name="admission" id="admission" class="form-control show-tick">
+                                    <option value="">Year of Admission</option>
+                                    <?php
                                             for ($x = 2000; $x <= 3000; $x++) {
                                                 echo "<option value='$x'>$x</option>";
                                             }
-                                            ?>
-                                        </select>
-                                    </div>
+                                    ?>
+                                </select>
                                 </div>
+                                </div>
+
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="number" class="form-control" placeholder="Age" name="age" />
@@ -153,14 +155,18 @@
                                         <input type="text" name="birthday" class="datepicker form-control" placeholder="Please choose a date...">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <select class="form-control show-tick" name="gender">
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                    </div>
+
+                                <div class="row clearfix">
+                                <div class="col-sm-12">
+                                <select name="gender" id="gender" class="form-control show-tick">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
                                 </div>
+                                </div>
+
+
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control" placeholder="Address" name="address" />
