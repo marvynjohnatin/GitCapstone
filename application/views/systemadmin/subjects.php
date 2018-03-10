@@ -5,7 +5,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="" width="107" height="107"/>
+                    <img src="<?php echo base_url()?>assets/images/users/<?php echo $account[0]['user_pic'] ?>" width="48" height="48" alt="User" />
                 </div>
 
             </div>
@@ -39,6 +39,12 @@
                         <a href="subjectlist">
                             <i class="material-icons">folder_shared</i>
                             <span>Grade Posting</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="managefees">
+                            <i class="material-icons">folder_shared</i>
+                            <span>Manage Fees</span>
                         </a>
                     </li>
                      <li class="">
@@ -97,29 +103,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>01</td>
-                                            <td>English 1</td>
-                                            <td>High School</td>
-                                            <td>Grade 7</td>
-                                            <td>N/A</td>
+
+                                            <?php foreach ($subjects as $subject): ?>
+                                            <tr>
+                                            <td><?php echo $subject['subject_code']?></td>
+                                            <td><?php echo $subject['subject_name']?></td>
+                                            <td><?php echo $subject['subject_level']?></td>
+                                            <td><?php echo $subject['subject_year']?></td>
+                                            <td><?php echo $subject['subject_strand']?></td>
                                             <td>
-                                            <a href="grade">    
+                                            <a href="grade">
                                             <button type="button" class="btn bg-green waves-effect">
                                             <i class="material-icons">create</i>
                                             <span>Update</span>
                                             </button>
                                             </a>
                                             &nbsp;
-                                            <a href="grade">    
+                                            <a href="grade">
                                             <button type="button" class="btn bg-red waves-effect">
                                             <i class="material-icons">clear</i>
                                             <span>Delete</span>
                                             </button>
                                             </a>
                                             </td>
-                                            
-                                        </tr>              
+                                            </tr>
+                                            <?php endforeach; ?>
+
                                     </tbody>
                                     <button type="button" class="btn bg-orange waves-effect" data-toggle="modal" data-target="#defaultModal">
                                     <i class="material-icons">add_circle</i>
@@ -157,9 +166,9 @@
 
                         <div class="col-sm-12">
                         
-                        <form action = "subjects" method="POST">
+                        <form action ="subjects" method="POST">
                         <h4><font color = "red"><b>Subject Description:</b></font></h4><input type = "text" class = "form-control" name = "description" required>
-
+                         <h4><font color = "red"><b>Subject Code:</b></font></h4><input type = "text" class = "form-control" name = "code" required>
                          <h4><font color = "red"><b>Subject Coordinator:</b></font></h4><input type = "text" class = "form-control" name = "coordinator" required>
 
                         <h4><font color = "red"><b>Subject Level:</b></font></h4>
@@ -174,7 +183,10 @@
 
                         <h4><font color = "red"><b>Subject Course: - For Senior High School Level</b></font></h4>
                         <select name="course" id="strand" class="form-control show-tick">
-                            <option value="" selected="selected" name = "course">N/A</option>
+                            <option value="N/A" selected="selected" name ="course">N/A</option>
+                            <option value="ABM">ABM</option>
+                            <option value="HUMMS">HUMMS</option>
+                            <option value="STEM">STEM</option>
                         </select>
                         <br>
                             </div>
@@ -251,3 +263,4 @@ window.onload = function () {
 }
 </script>
 
+</html>

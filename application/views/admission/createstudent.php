@@ -467,7 +467,7 @@
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="text" class="form-control" placeholder="Account Id"  id="accountid" readonly/>
-                                    <input type="hidden" class="form-control" name="id" id="accounthidid" />
+                                    <input type="hidden" class="form-control" name="accountid" id="accounthidid" />
                                 </div>
                             </div>
 
@@ -524,6 +524,7 @@
     <!-- End Form -->
 </section>
 <?php echo form_close()?>
+</body>
 <script>
     var levelObject = {
     "Elementary": {
@@ -593,35 +594,37 @@ window.onload = function () {
     $(document).ready(function() {
         $('[id^=parentid]').click(function() {
             var sid = $(this).val();
-            ////////////////////////////////////////////////////////////
-            var data_String = 'sid=' + sid;
-            $.get('<?php echo base_url(); ?>application/views/ajax/getparentdetails.php', data_String, function(result) {
-                $.each(result, function(){
-                     $('#accountid').val(this.Id);
-                    $('#accountfname').val(this.fname);
-                    $('#accountmname').val(this.mname);
-                    $('#accountlname').val(this.lname);
-                    $('#accountcontactno').val(this.contactno);
-                    $('#accountemail').val(this.email);
-                    $('#accounthidid').val(this.Id);
-                    $('#accounthidfname').val(this.fname);
-                    $('#accounthidmname').val(this.mname);
-                    $('#accounthidlname').val(this.lname);
-                    $('#accounthidcontactno').val(this.contactno);
-                    $('#accounthidemail').val(this.email);
-
-                });
-
+            $.ajax({
+                type : "POST",
+                url : "<?php echo base_url(); ?>admission/getparentdetails",
+                dataType : "json",
+                data : {"sid" : sid},
+                success : function(data) {
+                    $('#accountid').val(data[0]['Id']);
+                    $('#accountfname').val(data[0]['fname']);
+                    $('#accountmname').val(data[0]['mname']);
+                    $('#accountlname').val(data[0]['lname']);
+                    $('#accountcontactno').val(data[0]['contactno']);
+                    $('#accountemail').val(data[0]['email']);
+                    $('#accounthidid').val(data[0]['Id']);
+                    $('#accounthidfname').val(data[0]['fname']);
+                    $('#accounthidmname').val(data[0]['mname']);
+                    $('#accounthidlname').val(data[0]['lname']);
+                    $('#accounthidcontactno').val(data[0]['contactno']);
+                    $('#accounthidemail').val(data[0]['email']);
+                }
             });
         });
     });
 </script>
 
+
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#btnfather').click(function() {
             var fname = $('#fatherfname').val();
-
             var mname  = $('#fathermname').val();
             var lname  = $('#fatherlname').val();
             var contactno  = $('#fathercontactno').val();
@@ -641,8 +644,6 @@ window.onload = function () {
 
         });
 
-
-
         $('#btnmother').click(function() {
             var fname = $('#motherfname').val();
             var mname  = $('#mothermname').val();
@@ -661,7 +662,6 @@ window.onload = function () {
             $('#accounthidlname').val(this.lname);
             $('#accounthidcontactno').val(this.contactno);
             $('#accounthidemail').val(this.email);
-
         });
 
         $('#btnguardian').click(function() {
@@ -699,5 +699,5 @@ window.onload = function () {
 
 </script>
 
-</body>
+
 </html>

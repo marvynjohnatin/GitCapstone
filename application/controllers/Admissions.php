@@ -46,29 +46,9 @@ class Admissions extends CI_Controller {
             die('Please log in');
         }
             $data['account'] = $this->admission_model->getuserdetails($this->session->userdata['user_id']);
-        $search = $this->input->get('search');
-        $config['base_url'] =base_url("admissions/activatestudent/");
-        $config['per_page'] = 10;
-        $config['uri_segment'] = 3;
-        $config['attributes'] = array('class' => 'pagination-link');
-        $data['searchbar'] = $this->admission_model->getpendingstudents();
-
-        if(!isset($search)) {
-            $config['total_rows'] = $this->admission_model->numberpending();
-            $this->pagination->initialize($config);
-            $data['results'] = $this->admission_model->getpendingstudents($config['per_page'],$offset);
+            $data['results'] = $this->admission_model->getpendingstudents();
             $this->load->view('templates/header-basic');
             $this->load->view('admission/activatestudent', $data);
-        }
-        else{
-            if (count($_GET) > 0) $config['suffix'] = '?' . http_build_query($_GET, '', "&");
-            $config['first_url'] = $config['base_url'].'?'.http_build_query($_GET);
-            $config['total_rows'] = $this->admission_model->numbersearched($search);
-            $this->pagination->initialize($config);
-            $data['results'] = $this->admission_model->getsearchedstudents($search,$config['per_page'],$offset);
-            $this->load->view('templates/header-basic');
-            $this->load->view('admission/activatestudent', $data);
-        }
     }
 
     public function activating(){
@@ -112,5 +92,15 @@ class Admissions extends CI_Controller {
 
         redirect('admission/activatestudent');
     }
+
+    public function getparentdetails()
+    {
+        //AJAX converted to CI
+        $id = $this->input->post('sid');
+        $array = $this->admission_model->getparentdetails($id);
+        $encode = json_encode($array);
+        echo $encode;
+    }
+
 
 }

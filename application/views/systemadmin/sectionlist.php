@@ -41,6 +41,12 @@
                             <span>Grade Posting</span>
                         </a>
                     </li>
+                    <li class="">
+                        <a href="managefees">
+                            <i class="material-icons">folder_shared</i>
+                            <span>Manage Fees</span>
+                        </a>
+                    </li>
                      <li class="">
                         <a href="<?php echo base_url(); ?>faculty/logout">
                             <i class="material-icons">all_out</i>

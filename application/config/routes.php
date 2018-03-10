@@ -56,6 +56,9 @@ $route['accounting/payment'] = 'accountings/payment';
 $route['systemadmin/studentlist'] = 'systemadmins/studentlist';
 $route['systemadmin/yearlist'] = 'systemadmins/yearlist';
 $route['systemadmin/sectionlist'] = 'systemadmins/sectionlist';
+$route['systemadmin/subjects'] = 'systemadmins/subjects';
+$route['systemadmin/managefees'] = 'systemadmins/managefees';
+$route['systemadmin/addfee'] = 'systemadmins/addfee';
 //========================================================================>
 
 //Admission Routes
@@ -64,6 +67,8 @@ $route['admission/create'] = 'admissions/createstudent';
 $route['admission/activatestudent'] = 'admissions/activatestudent';
 $route['admission/activatestudent/activating'] = 'admissions/activating';
 $route['admission/activate'] = 'admissions/activate';
+$route['admission/getparentdetails'] = 'admissions/getparentdetails';
+
 
 $route['(:any)'] = 'webpages/view/$1';
 $route['default_controller'] = 'webpages/view';

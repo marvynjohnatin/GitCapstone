@@ -109,12 +109,8 @@
                         </h2>
                     </div>
                     <div class="body">
-
                         <div class="table-responsive">
-                            <form action="<?php echo base_url()?>admission/activatestudent">
-                                        Search:<input type="text" id="search" name="search">&nbsp;&nbsp;<button type="submit" class="btn btn-success" ><i class="icon-search icon-large"></i>&nbsp;</button>
-                            </form>
-                            <table class="table table-bordered table-striped table-hover dataTable">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                 <tr>
                                     <th>Student No.</th>
@@ -131,7 +127,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php echo form_open('admission/activatestudent/activating')?>
+
                                 <?php foreach($results as $student) : ?>
                                 <tr>
                                     <td><?php echo $student['studentnumber'] ?></td>
@@ -144,13 +140,13 @@
                                     <td><?php echo $student['address'] ?></td>
                                     <td><?php echo $student['current_level'] ?></td>
                                     <td><?php echo $student['current_year'] ?></td>
-                                    <td><div><button type="submit" name="studentid" value="<?php echo $student['Id'] ?>">Activate </button></div></td>
+                                    <td><button type="button" data-toggle="modal" data-target="#activateModal" class="btn bg-brown waves-effect" id="buttonid<?php echo $student['Id'] ?>" value="<?php echo $student['Id'] ?>"> Activate </button></td>
                                 </tr>
                                 <?php endforeach;?>
-                                </form>
                                 </tbody>
                             </table>
-                            <div class="pagination-links">
+
+                                <div class="pagination-links">
                                 <?php echo $this->pagination->create_links(); ?>
                             </div>
                         </div>
@@ -159,11 +155,53 @@
             </div>
         </div>
         <!-- #END# Basic Examples -->
+        <div class="modal fade" id="activateModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style = "background-color:red;">
+                        <h4 class="modal-title" id="defaultModalLabel"><font color = "white">Add Subject</font></h4>
+                        <br>
+                    </div>
+                    <div class="modal-body">
+                        <div class="body">
+                            <div class="row clearfix">
+
+
+
+                                <div class="col-sm-12">
+
+                                    <?php echo form_open('admission/activatestudent/activating')?>
+                                        Are you sure you want to activate this record?
+                                    <input type="hidden" id="hiddenidval" name="studentid" > </input>
+                                        <br>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style = "background-color:red;" >
+                        <button type="submit" class="btn btn-link waves-effect" name="submit"><font color = "orange">Activate</font></button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal"><font color = "orange">CLOSE</font></button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>
 
+
+
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[id^=buttonid]').click(function() {
+            $('#hiddenidval').val($(this).val());
+        });
+    });
+</script>
 <script>
     $( function() {
         var availableTags = [
@@ -178,5 +216,6 @@
     } );
     //javascript
 </script>
+
 
 </html>

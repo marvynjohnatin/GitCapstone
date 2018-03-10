@@ -25,6 +25,9 @@ class Logins extends CI_Controller {
                 if($user_id[0]['user_type'] == 'Admission') {
                     redirect('admission/activatestudent');
                 }
+                if($user_id[0]['user_type'] == 'SystemAdmin') {
+                    redirect('systemadmin/subjects');
+                }
             }
             else{
 

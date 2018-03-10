@@ -37,7 +37,7 @@
           <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><font color = "yellow">Logged in As:  || ID:  || Name:  </font></a>
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><font color = "yellow"><?php echo $this->session->userdata['accounttype']?> || ID: <?php echo $this->session->userdata['user_id'] ?> || Name: <?php echo $this->session->userdata['fname'] ?>  </font></a>
                     </li>
                     
                 </ul>

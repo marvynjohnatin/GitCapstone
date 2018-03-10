@@ -137,41 +137,20 @@ class Admission_model extends CI_Model
         return $query->result_array();
     }
 
-    public function numbersearched($search)
-    {
-        $this->db->where('account_status', 'Pending');
-        $this->db->like('fname', $search);
-        $query = $this->db->get('student');
-        return $query->num_rows();
-    }
-
-    public function getsearchedstudents($search, $limit = FALSE, $offset = false)
-    {
-        if ($limit) {
-            $this->db->limit($limit, $offset);
-        }
-        $this->db->where('account_status', 'Pending');
-        $this->db->like('studentnumber', $search, 'both' ,true);
-        $query = $this->db->get('student');
+    public function getparentdetails($id){
+        $this->db->where('Id',$id);
+        $query = $this->db->get('parent');
         return $query->result_array();
     }
 
-    public function getpendingstudents($limit=FALSE, $offset = false)
+    public function getpendingstudents()
     {
-        if($limit){
-            $this->db->limit($limit,$offset);
-        }
         $this->db->where('account_status', 'Pending');
         $query = $this->db->get('student');
         return $query->result_array();
     }
 
-    public function numberpending()
-    {
-        $this->db->where('account_status', 'Pending');
-        $query = $this->db->get('student');
-        return $query->num_rows();
-    }
+
 
     public function getparentactivation($parentid){
         $this->db->where('Id',$parentid);

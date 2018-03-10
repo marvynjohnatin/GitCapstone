@@ -28,17 +28,34 @@ class Systemadmins extends CI_Controller {
         $this->load->view('systemadmin/sectionlist');
 	}
 
-	public function subjects()
+    public function managefees()
+    {
+        $data['account'] = $this->systemadmin_model->getuserdetails($this->session->userdata['user_id']);
+        $data['fees'] = $this->systemadmin_model->getfees();
+        $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-systemadmin',$data);
+        $this->load->view('systemadmin/managefees',$data);
+    }
+
+    public function addfee()
+    {
+        $this->systemadmin_model->addfee();
+        redirect('systemadmin/managefees');
+    }
+
+
+    public function subjects()
 	{
 		$check= $this->input->post('description');
 		if(isset($check))
 		{
 			$this->systemadmin_model->insertdata();
 		}
-
+        $data['account'] = $this->systemadmin_model->getuserdetails($this->session->userdata['user_id']);
+        $data['subjects'] = $this->systemadmin_model->getsubjects();
 		$this->load->view('templates/header-basic');
-		$this->load->view('templates/navbar-systemadmin');
-        $this->load->view('systemadmin/subjects');
+		$this->load->view('templates/navbar-systemadmin',$data);
+        $this->load->view('systemadmin/subjects',$data);
 	}
 
 
