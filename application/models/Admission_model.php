@@ -52,8 +52,10 @@ class Admission_model extends CI_Model
                 $accountlname = $this->input->post('accountlname');
                 $accountcontactno = $this->input->post('accountcontactno');
                 $accountemail = $this->input->post('accountemail');
-                if(!isset($parentid)) {
+
+                if($parentid == ' ') {
                     //Generate UserName
+
                     $user = strtolower($accountfname . $accountlname);
                     $username = str_replace(' ', '', $user);
                    //Checking of existing username
@@ -80,7 +82,6 @@ class Admission_model extends CI_Model
                     //Assigning of ID to variable to use in record of student
                     $parentid = $this->db->insert_id();
                 }
-
 
 
                 $data = array(
