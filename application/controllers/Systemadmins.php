@@ -32,6 +32,7 @@ class Systemadmins extends CI_Controller {
     {
         $data['account'] = $this->systemadmin_model->getuserdetails($this->session->userdata['user_id']);
         $data['fees'] = $this->systemadmin_model->getfees();
+        $data['strands'] = $this->systemadmin_model->getstrands();
         $this->load->view('templates/header-basic');
         $this->load->view('templates/navbar-systemadmin',$data);
         $this->load->view('systemadmin/managefees',$data);

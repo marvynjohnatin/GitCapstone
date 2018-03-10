@@ -58,4 +58,8 @@ class Systemadmin_model extends CI_Model{
 
     }
 
+    public function getstrands(){
+        $query = $this->db->get('strand');
+        return $query->result_array();
+    }
 }

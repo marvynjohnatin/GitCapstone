@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="<?php echo base_url(); ?>login/logout">
+                    <a href="<?php echo base_url(); ?>user/logout">
                         <i class="material-icons">all_out</i>
                         <span>Logout</span>
                     </a>
@@ -163,29 +163,26 @@
                     <div class="modal-body">
                         <div class="body">
                             <div class="row clearfix">
-
-
-
                                 <div class="col-sm-12">
 
                                     <form action ="addfee" method="POST">
+
                                         <h4><font color = "red"><b>Fee Description:</b></font></h4><input type = "text" class = "form-control" name = "description" required>
                                         <h4><font color = "red"><b>Level:</b></font></h4>
                                         <select name="level" id="level" class="form-control show-tick">
-                                            <option value="" selected="selected" name = "level">Select Level</option>
+                                            <option value="General" selected="selected">General</option>
                                         </select>
 
                                         <h4><font color = "red"><b>Year:</b></font></h4>
                                         <select name="year" id="year" class="form-control show-tick">
-                                            <option value="" selected="selected" name = "year">Select Year </option>
+                                            <option value="General" selected="selected">General</option>
                                         </select>
-
                                         <h4><font color = "red"><b>Strand: - For Senior High School Level</b></font></h4>
-                                        <select name="strand" id="strand" class="form-control show-tick">
-                                            <option value="N/A" selected="selected" name ="course">N/A</option>
-                                            <option value="ABM">ABM</option>
-                                            <option value="HUMMS">HUMMS</option>
-                                            <option value="STEM">STEM</option>
+                                        <select name="strand" class="form-control show-tick">
+                                            <option value="N/A" selected="selected">N/A</option>
+                                            <?php foreach ($strands as $str): ?>
+                                                <option value="<?php echo $str['code']?>"><?php echo $str['code']?></option>
+                                            <?php endforeach;?>
                                         </select>
                                         <h4><font color = "red"><b>Amount Fee:</b></font></h4><input type = "text" class = "form-control" name = "amount" required>
 
@@ -196,7 +193,7 @@
                         </div>
                     </div>
                     <div class="modal-footer" style = "background-color:red;" >
-                        <button type="submit" class="btn btn-link waves-effect" name="submit"><font color = "orange">SAVE CHANGES</font></button>
+                        <button type="submit" class="btn btn-link waves-effect" name="submit"><font color = "orange">Add Fee</font></button>
                         <button type="button" class="btn btn-link waves-effect" data-dismiss="modal"><font color = "orange">CLOSE</font></button>
                     </div>
                     </form>
@@ -213,8 +210,7 @@
 </body>
 
 <script>
-    var levelobject = {
-
+    var levelObject = {
         "Elementary": {
             "Grade 1": [],
             "Grade 2": [],
@@ -232,36 +228,35 @@
         },
 
         "Senior Highschool": {
-            "Grade 11": ["ABM", "STEM","HUMMS"],
-            "Grade 12": ["ABM", "STEM","HUMMS"]
+            "Grade 11": [],
+            "Grade 12": []
 
-        }
+        },
+
     }
     window.onload = function () {
-        var level = document.getElementById("level"),
-            year = document.getElementById("year"),
-            strand = document.getElementById("strand");
-        for (var state in levelobject) {
-            level.options[level.options.length] = new Option(state, state);
-        }
-        level.onchange = function () {
-            year.length = 1; // remove all options bar first
-            strand.length = 1; // remove all options bar first
-            if (this.selectedIndex < 1) return; // done
-            for (var county in levelobject[this.value]) {
-                year.options[year.options.length] = new Option(county, county);
+            var Level = document.getElementById("level"),
+                Grade = document.getElementById("year"),
+                variable = document.getElementById("variable");
+            for (var level in levelObject) {
+                Level.options[Level.options.length] = new Option(level, level);
+            }
+            Level.onchange = function () {
+                Grade.length = 1; // remove all options bar first
+
+                if (this.selectedIndex < 1) return; // done
+                for (var grade in levelObject[this.value]) {
+                    Grade.options[Grade.options.length] = new Option(grade, grade);
+                }
+            }
+            Level.onchange(); // reset in case page is reloaded
+            Grade.onchange = function () {
+
+                if (this.selectedIndex < 1) return; // done
+                var cities = levelObject[Level.value][this.value];
+
             }
         }
-        level.onchange(); // reset in case page is reloaded
-        year.onchange = function () {
-            strand.length = 1; // remove all options bar first
-            if (this.selectedIndex < 1) return; // done
-            var cities = levelobject[level.value][this.value];
-            for (var i = 0; i < cities.length; i++) {
-                strand.options[strand.options.length] = new Option(cities[i], cities[i]);
-            }
-        }
-    }
-</script>
+        </script>
 
 </html>
