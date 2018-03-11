@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2018 at 01:40 PM
+-- Generation Time: Mar 11, 2018 at 10:57 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `sja_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `academic`
+--
+
+CREATE TABLE `academic` (
+  `Id` int(11) NOT NULL,
+  `settingname` text NOT NULL,
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `academic`
+--
+
+INSERT INTO `academic` (`Id`, `settingname`, `value`) VALUES
+(1, 'schoolyear', '2017-2018'),
+(2, 'startingdate', '2017-06-15'),
+(3, 'endingdate', '2018-02-15'),
+(4, 'fulldiscount', '.05');
 
 -- --------------------------------------------------------
 
@@ -101,6 +123,21 @@ INSERT INTO `fee` (`Id`, `fee_description`, `year`, `level`, `strand`, `amount`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `grade`
+--
+
+CREATE TABLE `grade` (
+  `Id` int(11) NOT NULL,
+  `studentid` text NOT NULL,
+  `subjectid` text NOT NULL,
+  `subjectcode` text NOT NULL,
+  `subjectteacher` text NOT NULL,
+  `grade` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `parent`
 --
 
@@ -115,6 +152,13 @@ CREATE TABLE `parent` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `parent`
+--
+
+INSERT INTO `parent` (`Id`, `fname`, `lname`, `mname`, `address`, `contactno`, `email`, `username`, `password`) VALUES
+(1, 'Mario', 'Atin', 'Caymo', '', '09154095632', 'mario@gmail.com', 'marioatin', 'itsmorefunatsja');
 
 -- --------------------------------------------------------
 
@@ -182,6 +226,7 @@ CREATE TABLE `student` (
   `email` text NOT NULL,
   `current_level` text NOT NULL,
   `current_year` text NOT NULL,
+  `current_strand` text NOT NULL,
   `current_section` text NOT NULL,
   `status_enrolled` text NOT NULL,
   `stud_pic` text NOT NULL,
@@ -206,8 +251,19 @@ CREATE TABLE `student` (
   `guardianlname` text NOT NULL,
   `guardiancontactno` text NOT NULL,
   `guardianemail` text NOT NULL,
-  `guardianoccupation` text NOT NULL
+  `guardianoccupation` text NOT NULL,
+  `paymentperiod` text NOT NULL,
+  `scholar` text NOT NULL,
+  `discount` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `parentid`, `email`, `current_level`, `current_year`, `current_strand`, `current_section`, `status_enrolled`, `stud_pic`, `examgrade`, `examremark`, `password`, `account_status`, `fatherfname`, `fathermname`, `fatherlname`, `fatheroccupation`, `fathercontactno`, `fatheremail`, `motherfname`, `mothermname`, `motherlname`, `motheroccupation`, `mothercontactno`, `motheremail`, `guardianfname`, `guardianmname`, `guardianlname`, `guardiancontactno`, `guardianemail`, `guardianoccupation`, `paymentperiod`, `scholar`, `discount`) VALUES
+(1, '20151000', 'Marvyn John', 'Atin', 'Casao', '20', '1997-11-16', 'Male', '#149 Tulay, Ibaan, Batangas', 'Putatan Muntinlupa City', '09154095632', '1', 'marvynjohnatin@gmail.com', 'Highschool', '8', '', '', 'No', '1451500_700507843300899_1312591366_n.jpg', 'Pending', 'PASS', 'password123', 'Activated', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evelyn', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'Elena', 'Casao', 'Casao', '09154095632', 'asd@aasd', 'Housewife', '', '3rd Honor', '10%'),
+(5, '50000000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'No', 'noimage.jpg', 'Pending', 'FAIL', 'itsmorefunatsja', 'Pending', 'asd', 'asd', 'asd', 'sasdas', '09154095632', 'asd@asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -337,12 +393,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `fname`, `lname`, `user_type`, `user_pic`) VALUES
 (1, 'irisjoshtanyag', 'irisjoshuatanyag', 'Iris Joshua', 'Tanyag', 'Registrar', 'noimage.jpg'),
-(2, 'admission', 'admissionpassword', 'AdmissionFname', 'AdmissionLname', 'Admission', 'noimage.jpg'),
+(2, 'admission', 'password123', 'AdmissionFname', 'AdmissionLname', 'Admission', 'noimage.jpg'),
 (3, 'systemadmin', 'password123', 'systemadminfname', 'systemadminlname', 'SystemAdmin', 'noimage.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `academic`
+--
+ALTER TABLE `academic`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `announcements`
@@ -354,6 +416,12 @@ ALTER TABLE `announcements`
 -- Indexes for table `fee`
 --
 ALTER TABLE `fee`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `grade`
+--
+ALTER TABLE `grade`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -404,6 +472,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `academic`
+--
+ALTER TABLE `academic`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
@@ -416,10 +490,16 @@ ALTER TABLE `fee`
   MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `grade`
+--
+ALTER TABLE `grade`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -437,7 +517,7 @@ ALTER TABLE `strand`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `subjects`
