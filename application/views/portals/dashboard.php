@@ -243,18 +243,6 @@
                                     </div>";
 
                                     echo "<div class='col-md-3'>
-                                        <b>Last School Attended</b>
-                                        <div class='input-group'>
-                                            <span class='input-group-addon'>
-                                                <i class='material-icons'>assignment_ind</i>
-                                            </span>
-                                            <div class='form-line'>
-                                                <input type='text' class='form-control date' value = '' readonly>
-                                            </div>
-                                        </div>
-                                    </div>";
-
-                                    echo "<div class='col-md-3'>
                                         <b>Phone Number</b>
                                         <div class='input-group'>
                                             <span class='input-group-addon'>
@@ -273,7 +261,7 @@
                                                 <i class='material-icons'>email</i>
                                             </span>
                                             <div class='form-line'>
-                                                <input type='text' class='form-control email' value = '' readonly>
+                                                <input type='text' class='form-control email' value = '". $results['email'] . "' readonly>
                                             </div>
                                         </div>
                                     </div>";
@@ -309,7 +297,7 @@
                                                 <i class="material-icons">assignment_ind</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control date" name = "fathername" readonly>
+                                                <input type='text' class='form-control date' name = 'fathername' value ="<?php echo $results['fatherfname'].' '.$results['fatherlname']?>" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -321,7 +309,7 @@
                                                 <i class="material-icons">assignment_ind</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control date" name = "mothername" readonly>
+                                                <input type="text" class="form-control date" name = "mothername" value = '". $results['motherfname'] . "' readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -333,7 +321,7 @@
                                                 <i class="material-icons">phone</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control mobile-phone-number" placeholder="Ex: +00 (000) 000-00-00">
+                                                <input type="text" class="form-control mobile-phone-number" value = '". $results['fathercontactno'] . "' placeholder="Ex: +00 (000) 000-00-00">
                                             </div>
                                         </div>
                                     </div>
@@ -345,7 +333,7 @@
                                                 <i class="material-icons">phone</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control mobile-phone-number" placeholder="Ex: +00 (000) 000-00-00">
+                                                <input type="text" class="form-control mobile-phone-number" value = '". $results['mothercontactno'] . "' placeholder="Ex: +00 (000) 000-00-00">
                                             </div>
                                         </div>
                                     </div>
@@ -357,7 +345,7 @@
                                                 <i class="material-icons">assignment_ind</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control date" name = "occupation1" readonly>
+                                                <input type="text" class="form-control date" name = "occupation1" value = '". $results['fatheroccupation'] . "' readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -369,7 +357,7 @@
                                                 <i class="material-icons">assignment_ind</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control date" name = "occupation2" readonly>
+                                                <input type="text" class="form-control date" name = "occupation2" value = '". $results['motheroccupation'] . "' readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -381,7 +369,7 @@
                                                 <i class="material-icons">assignment_ind</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control date" name = "guardianname" readonly>
+                                                <input type="text" class="form-control date" value = '". $results['guardianfname'] ."' name = "guardianname" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -393,7 +381,7 @@
                                                 <i class="material-icons">phone</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control mobile-phone-number" placeholder="Ex: +00 (000) 000-00-00">
+                                                <input type="text" class="form-control mobile-phone-number" value = '". $results['guardiancontactno'] . "' placeholder="Ex: +00 (000) 000-00-00">
                                             </div>
                                         </div>
                                     </div>

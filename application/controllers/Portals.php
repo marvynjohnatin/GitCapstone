@@ -102,6 +102,8 @@ class Portals extends CI_Controller
             die('Please log in');
         }
         $data['results'] = $this->student_model->get_details();
+        $data['sy'] = array($this->student_model->getacademicsy());
+
         if(empty($data['results']))
         {
             show_404();
@@ -128,6 +130,20 @@ class Portals extends CI_Controller
             die('Please log in');
         }
         $data['results'] = $this->student_model->get_details();
+        if ($payment = 'Monthly') {
+            $startdate = $this->student_model->getstart();
+            $enddate = $this->student_model->getend();
+            $start = new DateTime($startdate);
+            $start->modify('first day of this month');
+            $end = new DateTime($enddate);
+            $end->modify('first day of next month');
+            $interval = DateInterval::createFromDateString('1 month');
+
+            $period = new DatePeriod($start, $interval, $end);
+            foreach ($period as $dt) {
+                $data['months']['month'][] = $dt->format("F");
+            }
+        }
         if(empty($data['results']))
         {
             show_404();
@@ -154,7 +170,32 @@ class Portals extends CI_Controller
          if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Student'){
              die('Please log in');
          }
+        $payment = $this->input->post('payment');
+        $year = $this->input->post('currentyear');
+        $strand = $this->input->post('strand');
+        $data['sy'] = array($this->student_model->getacademicsy());
+        if($payment = 'Full')
+        {
+            $data['discount'] = array($this->student_model->getacademicfulldiscount());
+        }
         $data['results'] = $this->student_model->get_details();
+        $data['subjects'] = $this->student_model->get_subjects($year,$strand);
+        $data['fees'] = $this->student_model->get_fees($year,$strand);
+         if ($payment = 'Monthly')
+         {
+             $startdate = $this->student_model->getstart();
+             $enddate = $this->student_model->getend();
+             $start = new DateTime($startdate);
+             $start->modify('first day of this month');
+             $end = new DateTime($enddate);
+             $end->modify('first day of next month');
+             $interval = DateInterval::createFromDateString('1 month');
+
+             $period = new DatePeriod($start, $interval, $end);
+             foreach ($period as $dt) {
+                 $data['months']['month'][] = $dt->format("F");
+             }
+         }
         if(empty($data['results']))
         {
             show_404();
@@ -205,7 +246,10 @@ class Portals extends CI_Controller
         redirect('login');
     }
 
+
+
     public function test(){
        $this->load->view('portals/smsbalance');
     }
+
 }

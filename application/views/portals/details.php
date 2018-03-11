@@ -120,7 +120,7 @@
         <!-- Right Sidebar -->
         
     </section>
-
+    <?php echo form_open('portals/addpaymentrecord')?>
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -141,14 +141,15 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Level:<font color = "green"> <b>Highschool</b></font>
+                    Level:<font color = "green"> <?php echo $results['current_level'] ?></font>
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Grade:<font color = "green"> <b>Grade 8</b></font>
+                    Grade:<font color = "green"> <b>Grade <?php echo $results['current_year'] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
@@ -158,26 +159,42 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Section: <font color = "green"> <b>St. Mary</b></font>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                School Year: <font color = "green"> <b>2015-2016</b></font>
+                School Year: <font color = "green"> <b><?php echo $sy[0] ?></b></font>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row clearfix">
-                                <div class="col-sm-12">
+                                <div class="col-sm-4">
                                     <div class="form-group">
                                     <div class="form-line">
                                     Payment Type: 
-                                    <font color = "green"><b>Monthly</b></font>
+                                    <font color = "green"><b><?php echo $this->input->post('payment');?></b></font>
+                                        <input type="hidden" name="payment" value="<?php echo $this->input->post('payment');?>" ?>
+                                        <input type="hidden" name="studentid" value="<?php echo $this->session->userdata['studentnumber'];?>" ?>
                                     </div>                          
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            Scholar Type:
+                                            <font color = "green"><b><?php echo $results['scholar'];?></b></font>
+                                            <input type="hidden" name="scholar" value="<?php echo $results['scholar'];?>" ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            Scholarship Discount:
+                                            <font color = "green"><b><?php echo $results['discount'];?></b></font>
+                                            <input type="hidden" name="payment" value="<?php echo $results['discount'];?>" ?>
+
+                                        </div>
                                     </div>
                                 </div>
                             
@@ -186,9 +203,7 @@
                              <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                    <a href = "details">
                                      <button type="button" class="btn btn-block btn-lg btn-warning waves-effect">Apply For Enrollment!</button>
-                                     </a>                                  
                                     </div>
                                 </div>
                             
@@ -218,25 +233,16 @@
                                     <thead>
                                         <tr>
                                             <th>Code</th>
-                                            <th>Subject</th>            
+                                            <th>Name</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($subjects as $subject): ?>
                                         <tr>
-                                            <td>01</td>
-                                            <td>Algebra 2</td>
-
+                                            <td><?php echo $subject['subject_code']?></td>
+                                            <td><?php echo $subject['subject_name']?></td>
                                         </tr>
-                                        <tr>
-                                            <td>02</td>
-                                            <td>Chemistry</td>
-                                        </tr>
-                                        <tr>
-                                            <td>03</td>
-                                            <td>Filipino 2</td>
-                                        </tr>
-                                        
-                                        
+                                    <?php endforeach;?>
                                     </tbody>
                                 </table>
                             </div>
@@ -245,11 +251,71 @@
                 </div>
             </div>
 
+            <!-- Assesment -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <font color = "red"><b>Fee Details</b></font>
+                            </h2>
 
-         
-           
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th>Fee Description</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $total = 0; ?>
+                                    <?php foreach ($fees as $fee): ?>
+                                        <tr>
+                                            <td><?php echo $fee['fee_description'] ?></td>
+                                            <td>Php <?php echo number_format($fee['amount'], 2, '.', ',');?></td>
+                                        </tr>
+                                    <?php $total = $total + $fee['amount']; ?>
+                                    <?php endforeach;?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            Overall Fee:<?php echo 'Php '.number_format($total, 2, '.', ',')?><br>
+                            <?php $percent = str_replace('%', '', $results['discount']) / 100;?>
+                            Discount:<?php echo $results['discount']?><br>
+                            <?php $disc=0 ?>
+                            <?php if($this->input->post('payment') == 'Full'){
+                                echo "Fully Paid Discount:".$discount[0]*100;
+                                echo "%<br>";
+                                $disc = $discount[0] * $total;
+                            }
+                            ?>
 
-            
+
+                            Deduction:<?php $deducted = ($total*$percent)+$disc; echo 'Php '.number_format($deducted, 2, '.', ',') ?><br>
+                            <strong>Total:<?php $total_fee = $total-$deducted; echo 'Php '.number_format($total_fee, 2, '.', ',') ?><br></strong>
+                            <input type="hidden" value="<?php echo $total_fee?>" name="totalfee"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Enroll Now</button>
+            <?php echo form_close()?>
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </section>
 

@@ -136,36 +136,41 @@
                             </h2>
                         </div>
                         <div class="body">
-
+                            <?php echo form_open('portals/details');?>
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Level:<font color = "green"> <b>Highschool</b></font>
+                    Current Level:<font color = "green"> <b><?php echo $results['current_level']?></b></font>
+                                            <input type="hidden" value="<?php echo $results['current_level']?>" name="currentlevel"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Year:<font color = "green"> <b>Grade 7</b></font>
+                    Current Year:<font color = "green"> <b>Grade <?php echo $results['current_year']?></b></font>
+                                   <input type="hidden" value="<?php echo $results['current_year']?>" name="currentyear"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row clearfix">
+
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Section: <font color = "green"> <b>St. Lorenzo</b></font>
+                                            Strand: <font color = "green"> <b><?php echo $results['current_strand']?></b></font>
+                                            <input type="hidden" value="<?php echo $results['current_strand']?>" name="strand"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-            Present School Year: <font color = "green"> <b>2013-2014</b></font>
+            Present School Year: <font color = "green"> <b><?php echo $sy[0]?></b></font>
+                                            <input type="hidden" value="<?php echo $sy[0]?>" name="schoolyear"/>
                                         </div>
                                     </div>
                                 </div>
@@ -175,11 +180,9 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                 Payment Type:&emsp;
-                                <input type="checkbox" id="md_checkbox_21" class="filled-in chk-col-red" />
+                                <input type="radio" id="md_checkbox_21" name="payment" value="Monthly" class="radio-col-brown" required/>
                                 <label for="md_checkbox_21">Monthly</label>&emsp;
-                                <input type="checkbox" id="md_checkbox_22" class="filled-in chk-col-red" />
-                                <label for="md_checkbox_22">Quarterly</label>&emsp;
-                                <input type="checkbox" id="md_checkbox_23" class="filled-in chk-col-red"  />
+                                <input type="radio" id="md_checkbox_23" name="payment"value="Full" class="radio-col-brown"/>
                                 <label for="md_checkbox_23">Full Payment</label>&emsp;
                                     </div>
                                 </div>
@@ -189,9 +192,8 @@
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                    <a href = "details">
-                                     <button type="button" class="btn btn-block btn-lg btn-warning waves-effect">Verify Account!</button>
-                                     </a>                                  
+                                     <button type="submit" class="btn btn-block btn-lg btn-warning waves-effect">Enroll Now!</button>
+                                     <?php echo form_close(); ?>
                                     </div>
                                 </div>
                             
@@ -213,6 +215,6 @@
         </div>
     </section>
 
-   
+
 </body>
 

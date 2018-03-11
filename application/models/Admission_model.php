@@ -25,7 +25,7 @@ class Admission_model extends CI_Model
                 $contactno = $this->input->post('contactno');
                 $email = $this->input->post('email');
                 $level = $this->input->post('level');
-                $year = $this->input->post('admission');
+                $year = $this->input->post('grade');
                 $examgrade = $this->input->post('examgrade');
                 $examremark = $this->input->post('examremark');
                 $fatherfname = $this->input->post('fatherfname');
@@ -81,7 +81,7 @@ class Admission_model extends CI_Model
                     //Assigning of ID to variable to use in record of student
                     $parentid = $this->db->insert_id();
                 }
-                
+
                 $data = array(
                     'fname' => $fname,
                     'lname' => $lname,
