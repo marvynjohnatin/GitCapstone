@@ -14,6 +14,14 @@ class Systemadmin_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function getsubjectlist()
+    {
+        $this->db->select('*');
+        $this->db->from('subjects');
+        $data = $this->db->get('');
+        return $data;
+    }
+
     public function insertdata()
     {
     	$fields = array(

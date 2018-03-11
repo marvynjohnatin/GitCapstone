@@ -107,7 +107,7 @@
                                             <?php foreach ($subjects as $subject): ?>
                                             <tr>
                                             <td><?php echo $subject['subject_code']?></td>
-                                            <td><?php echo $subject['subject_name']?></td>
+                                            <td style = "width:200px;"><?php echo $subject['subject_name']?></td>
                                             <td><?php echo $subject['subject_level']?></td>
                                             <td><?php echo $subject['subject_year']?></td>
                                             <td><?php echo $subject['subject_strand']?></td>
@@ -133,6 +133,12 @@
                                     <button type="button" class="btn bg-orange waves-effect" data-toggle="modal" data-target="#defaultModal">
                                     <i class="material-icons">add_circle</i>
                                     <span>Add New Subject</span>
+                                    </button>
+                                    &nbsp;
+                                     <a href="<?php echo base_url(); ?>systemadmin/report">
+                                    <button type="button" class="btn bg-orange waves-effect" style = "width:150px;" >
+                                    <i class="material-icons">print</i>
+                                    <span>Print</span>
                                     </button>
                                     <br>
                                     <br>

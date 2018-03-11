@@ -59,6 +59,7 @@ $route['systemadmin/sectionlist'] = 'systemadmins/sectionlist';
 $route['systemadmin/subjects'] = 'systemadmins/subjects';
 $route['systemadmin/managefees'] = 'systemadmins/managefees';
 $route['systemadmin/addfee'] = 'systemadmins/addfee';
+$route['systemadmin/report'] = 'systemadmins/index';
 //========================================================================>
 
 //Admission Routes

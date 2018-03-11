@@ -4,9 +4,17 @@ class Systemadmins extends CI_Controller {
 	public function _construct()
 	{
 		parent::_construct();
-
+		$this->load->library('pdf_report');
 		$this->load->model(array('systemadmin_model'));
 	}
+
+	public function index()
+	{
+		$data = $this->systemadmin_model->getsubjectlist();
+		$this->load->view('systemadmin/v_report',['data'=>$data]);
+
+	}
+
 	public function studentlist()
 	{
 		$this->load->view('templates/header-basic');
