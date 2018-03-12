@@ -10,8 +10,10 @@ class Systemadmins extends CI_Controller {
 
 	public function index()
 	{
-		$data = $this->systemadmin_model->getsubjectlist();
-		$this->load->view('systemadmin/v_report',['data'=>$data]);
+		$code = $this->input->get('code');
+		$this->load->model('systemadmin_model');
+		$data['data'] = $this->systemadmin_model->getsubjectlist($code);
+		$this->load->view('systemadmin/v_report',$data);
 
 	}
 

@@ -112,12 +112,12 @@
                                             <td><?php echo $subject['subject_year']?></td>
                                             <td><?php echo $subject['subject_strand']?></td>
                                             <td>
-                                            <a href="grade">
-                                            <button type="button" class="btn bg-green waves-effect">
+                                            
+                                            <button type="button" class="btn bg-green waves-effect"  onclick="window.location='report/?code=<?php echo $subject['subject_code'] ?>'">
                                             <i class="material-icons">create</i>
                                             <span>Update</span>
                                             </button>
-                                            </a>
+
                                             &nbsp;
                                             <a href="grade">
                                             <button type="button" class="btn bg-red waves-effect">

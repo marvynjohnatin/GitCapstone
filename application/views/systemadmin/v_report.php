@@ -121,9 +121,8 @@ $table .= '<tr>
 			<th style="border:1px solid #000;">Subject Course</th>
 		   </tr>';
 
-foreach ($data->result() as $row) 
+foreach ($data as $row) 
 		{
-			
 		$table .= '<tr>
 				<td style="border:1px solid #000;">'.$row->subject_code.'</td>
 				<td style="border:1px solid #000;">'.$row->subject_name.'</td>
