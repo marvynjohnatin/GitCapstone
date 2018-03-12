@@ -120,7 +120,7 @@
         <!-- Right Sidebar -->
         
     </section>
-    <?php echo form_open('portals/addpaymentrecord')?>
+    <?php echo form_open('portals/addinvoicerecord')?>
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -160,7 +160,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                 School Year: <font color = "green"> <b><?php echo $sy[0] ?></b></font>
-
+                <input type="hidden" value="<?php echo $sy[0] ?>" name="schoolyear">
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +173,7 @@
                                     Payment Type: 
                                     <font color = "green"><b><?php echo $this->input->post('payment');?></b></font>
                                         <input type="hidden" name="payment" value="<?php echo $this->input->post('payment');?>" ?>
-                                        <input type="hidden" name="studentid" value="<?php echo $this->session->userdata['studentnumber'];?>" ?>
+                                        <input type="hidden" name="studentnumber" value="<?php echo $this->session->userdata['studentnumber'];?>" ?>
                                     </div>                          
                                     </div>
                                 </div>
@@ -183,7 +183,6 @@
                                             Scholar Type:
                                             <font color = "green"><b><?php echo $results['scholar'];?></b></font>
                                             <input type="hidden" name="scholar" value="<?php echo $results['scholar'];?>" ?>
-
                                         </div>
                                     </div>
                                 </div>
@@ -195,15 +194,6 @@
                                             <input type="hidden" name="payment" value="<?php echo $results['discount'];?>" ?>
 
                                         </div>
-                                    </div>
-                                </div>
-                            
-                            </div>
-
-                             <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                     <button type="button" class="btn btn-block btn-lg btn-warning waves-effect">Apply For Enrollment!</button>
                                     </div>
                                 </div>
                             

@@ -145,14 +145,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Level:<font color = "green"> <b>Highschool</b></font>
+                    Current Level:<font color = "green"> <b><?php echo $results['current_level'] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Year:<font color = "green"> <b>Grade 7</b></font>
+                    Current Year:<font color = "green"> <b><?php echo $results['current_year'] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
@@ -162,258 +162,37 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Section: <font color = "green"> <b>St. Lorenzo</b></font>
+                Current School Year: <font color = "green"> <b><?php echo $sy[0] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                Current School Year: <font color = "green"> <b>2013-2014</b></font>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                    Total Amount Due:<font color = "green"> <b>P 7,000.00</b></font>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
-                                        <tr>
+                                    <tr>
                                         <th>Detail Number</th>
-                                        <th>Payment Name</th>
+                                        <th>Month</th>
                                         <th>Amount</th>
-                                        <th>Due Date</th>
-                                        <th>Action</th> 
-                                        </tr>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>5</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>6</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>7</td>
-                                            <td>Monthly</td>
-                                            <td>P 1,000/00</td>
-                                            <td>05/16/2018</td>
-                                            <td>
-                                            <a href="grade">    
-                                            <button type="button" class="btn bg-green waves-effect">
-                                            <i class="material-icons">payment</i>
-                                            <span>Pay Online</span>
-                                            </button>
-                                            </a>
-                                            </td>
-                                        </tr>
-
-
-                                        
-                                        
-                                    </tbody>
+                                                <?php foreach ($invoices as $invoice):?>
+                                                    <tr>
+                                                        <td><?php echo $invoice['Id']?></td>
+                                                        <td><?php echo $invoice['month']?></td>
+                                                        <td><?php echo $invoice['amount']?></td>
+                                                        <td>
+                                                            <button type="button" data-toggle="modal" data-target="#activateModal" class="btn bg-green waves-effect" id="paymentbutton<?php echo $invoice['Id']?>" value="<?php echo $invoice['Id']?>">
+                                                                <i class="material-icons">payment</i>
+                                                                <span>Pay Online</span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach;?>
+                                                </tbody>
                                 </table>
                             </div>
 
@@ -433,19 +212,71 @@
                 </div>
             </div>
             <!-- #END# Basic Examples -->
+        </div>
 
-           
-            
-              
-            
+
+
+
+            <!-- #END# Basic Examples -->
+            <div class="modal fade" id="activateModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style = "background-color:red;">
+                            <h4 class="modal-title" id="defaultModalLabel"><font color = "white">You are Proceeding to Paypal Payment</font></h4>
+                            <br>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="body">
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <?php echo form_open('paypal/create_payment_with_paypal')?>
+                                        <input type="hidden" name="item_name" value="Payment Fee SJA" > </input>
+                                        Id:<input type="text" id="paymentid" readonly>
+                                        <input type="hidden" id="hiddenpaymentid" name="payment_number" > </input>
+                                        Month:<input type="text" id="month" readonly><br>
+                                        <input name="item_description" type="hidden" value="School Fee">
+                                        <input type="hidden" id="hiddenmonth" name="payment_description" > </input>
+                                        Amount:<input type="text" id="paymentamount" readonly><br>
+                                        <input type="hidden" id="hiddenpaymentamount" name="paymentamount" > </input>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style = "background-color:red;" >
+                            <button type="submit" class="btn btn-link waves-effect" ><font color = "orange">Proceed</font></button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal"><font color = "orange">CLOSE</font></button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-         
-           
+
 
             
         </div>
     </section>
-
-   
 </body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('[id^=paymentbutton]').click(function() {
+            var sid = $(this).val();
+            $.ajax({
+                type : "POST",
+                url : "<?php echo base_url(); ?>portals/getinvoicedetails",
+                dataType : "json",
+                data : {"sid" : sid},
+                success : function(data) {
+                    $('#paymentid').val(data[0]['Id']);
+                    $('#month').val(data[0]['month']);
+                    $('#paymentamount').val(data[0]['amount']);
+                    $('#hiddenpaymentid').val(data[0]['Id']);
+                    $('#hiddenmonth').val(data[0]['month']);
+                    $('#hiddenpaymentamount').val(data[0]['amount']);
 
+                }
+            });
+        });
+    });
+</script>
