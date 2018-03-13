@@ -8,7 +8,30 @@ class Admission_model extends CI_Model
         return $query->result_array();
     }
 
-
+    public function createapplicant($birthcertificate,$formone,$formnine,$goodmoral,$baptismal,$honorcertificate)
+    {
+        $array = array(
+        'fname' => $this->input->post('fname'),
+        'mname' => $this->input->post('mname'),
+        'lname' => $this->input->post('lname'),
+        'age' => $this->input->post('age'),
+        'dateofbirth' => $this->input->post('birthday'),
+        'gender' => $this->input->post('gender'),
+        'address' => $this->input->post('address'),
+        'placeofbirth' => $this->input->post('birthplace'),
+        'contactno' => $this->input->post('contactno'),
+        'email' => $this->input->post('email'),
+        'honorcertificate'=>$honorcertificate,
+        'birthcertificate'=>$birthcertificate,
+        'form137'=>$formone,
+        'form9'=>$formnine,
+        'goodmoral'=>$goodmoral,
+        'baptismal'=>$baptismal,
+        'admit_status'=>'Applicant'
+    );
+        $this->db->insert('student',$array);
+        return true;
+    }
 
     public function createstudent($post_image)
     {

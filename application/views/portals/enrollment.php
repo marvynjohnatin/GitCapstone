@@ -122,6 +122,8 @@
     </section>
 
     <section class="content">
+        <!--CHECK IF ALREADY ENROLLED -->
+        <?php if($results['status_enrolled']== 'No'): ?>
         <div class="container-fluid">
             <div class="block-header">
                 <h2>Enrollment Section</h2>
@@ -208,11 +210,27 @@
             </div>
             <!-- #END# Input -->
             <!-- Textarea -->
-         
-           
-
-            
         </div>
+        <?php else:?>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        You are already Enrolled or not paid your balance.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php endif;?>
     </section>
 
 

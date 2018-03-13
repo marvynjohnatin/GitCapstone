@@ -12,6 +12,16 @@ class Admissions extends CI_Controller {
         $this->load->view('admission/createstudent',$data);
     }
 
+    public function viewcreateapplicant()
+    {
+        if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Admission'){
+            die('Please log in');
+        }
+        $data['account'] = $this->admission_model->getuserdetails($this->session->userdata['user_id']);
+        $this->load->view('templates/header-basic');
+        $this->load->view('admission/createapplicant',$data);
+    }
+
 
     public function createstudent()
     {
@@ -28,16 +38,49 @@ class Admissions extends CI_Controller {
         $this->load->library('upload',$config);
         if(!$this->upload->do_upload())
         {
-            $errors = array('error' => $this->upload->display_errors());
             $post_image = 'noimage.jpg';
         }
         else
         {
-            $data = array('upload_data' => $this->upload->data());
             $post_image = $_FILES['userfile']['name'];
         }
         $this->admission_model->createstudent($post_image);
         redirect('admission/addstudent');
+    }
+
+    public function createapplicant()
+    {
+        if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Admission'){
+            die('Please log in');
+        }
+        //Upload Image
+        $config['upload_path'] = './assets/images/applicant';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '2048';
+        $config['max_width'] = '2000';
+        $config['max_height'] = '2000';
+        $config['overwrite'] = true;
+        $this->load->library('upload',$config);
+        $this->upload->do_upload('birthfile');
+        $this->upload->do_upload('formonethreeseven');
+        $this->upload->do_upload('formnine');
+        $this->upload->do_upload('goodmoral');
+        $this->upload->do_upload('baptismal');
+        $this->upload->do_upload('honorfile');
+        $birthcertificate = $_FILES['birthfile']['name'];
+        $formone = $_FILES['formonethreeseven']['name'];
+        $formnine = $_FILES['formnine']['name'];
+        $goodmoral = $_FILES['goodmoral']['name'];
+        $baptismal = $_FILES['baptismal']['name'];
+        $honorcertificate = $_FILES['honorfile']['name'];
+        if(!$this->admission_model->createapplicant($birthcertificate,$formone,$formnine,$goodmoral,$baptismal,$honorcertificate))
+        {
+            show_404();
+        }
+        else {
+            alert('Adding Applicant Success');
+            redirect('admission/viewcreateapplicant');
+        }
     }
 
     public function activatestudent($offset = 0)

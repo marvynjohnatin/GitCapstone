@@ -14,8 +14,10 @@ $route['portals/gradelist'] = 'portals/viewgradeslist';
 $route['portals/enrollment'] = 'portals/viewenrollment';
 $route['portals/schedule'] = 'portals/viewschedule';
 $route['portals/account'] = 'portals/viewaccount';
+$route['portals/paymentsuccess'] = 'portals/paymentsuccess';
 $route['portals/payment'] = 'portals/viewpayment';
 $route['portals/maintenance'] = 'portals/viewmaintenance';
+$route['portals/addinvoicerecord'] = 'portals/addinvoicerecord';
 $route['portals/details'] = 'portals/viewdetails';
 $route['login'] = 'portals/login';
 $route['accountsetupview'] = 'portals/accountsetupview';
@@ -69,9 +71,13 @@ $route['admission/activatestudent'] = 'admissions/activatestudent';
 $route['admission/activatestudent/activating'] = 'admissions/activating';
 $route['admission/activate'] = 'admissions/activate';
 $route['admission/getparentdetails'] = 'admissions/getparentdetails';
+$route['admission/viewapplicant'] = 'admissions/viewapplicant';
+$route['admission/viewcreateapplicant'] = 'admissions/viewcreateapplicant';
+$route['admission/createapplicant'] = 'admissions/createapplicant';
 
 
 $route['(:any)'] = 'webpages/view/$1';
 $route['default_controller'] = 'webpages/view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+

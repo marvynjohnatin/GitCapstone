@@ -158,6 +158,11 @@ class Portals extends CI_Controller
             die('Please log in');
         }
         $data['results'] = $this->student_model->get_details();
+        $studentnumber = $data['results']['studentnumber'];
+        $schoolyear = $this->student_model->getacademicsy();
+        $schoolyear = $this->student_model->getacademicsy();
+        $data['sy'] = array($this->student_model->getacademicsy());
+        $data['invoices'] = $this->student_model->getinvoices($studentnumber,$schoolyear);
         if(empty($data['results']))
         {
             show_404();
@@ -181,21 +186,6 @@ class Portals extends CI_Controller
         $data['results'] = $this->student_model->get_details();
         $data['subjects'] = $this->student_model->get_subjects($year,$strand);
         $data['fees'] = $this->student_model->get_fees($year,$strand);
-         if ($payment = 'Monthly')
-         {
-             $startdate = $this->student_model->getstart();
-             $enddate = $this->student_model->getend();
-             $start = new DateTime($startdate);
-             $start->modify('first day of this month');
-             $end = new DateTime($enddate);
-             $end->modify('first day of next month');
-             $interval = DateInterval::createFromDateString('1 month');
-
-             $period = new DatePeriod($start, $interval, $end);
-             foreach ($period as $dt) {
-                 $data['months']['month'][] = $dt->format("F");
-             }
-         }
         if(empty($data['results']))
         {
             show_404();
@@ -250,6 +240,50 @@ class Portals extends CI_Controller
 
     public function test(){
        $this->load->view('portals/smsbalance');
+    }
+
+    public function addinvoicerecord(){
+        $payment = $this->input->post('payment');
+        $studno = $this->input->post('studentnumber');
+        $total = $this->input->post('totalfee');
+        $sy = $this->input->post('schoolyear');
+        $amount = round($total,2);
+        if ($payment = 'Monthly')
+        {
+            $startdate = $this->student_model->getstart();
+            $enddate = $this->student_model->getend();
+            $start = new DateTime($startdate);
+            $start->modify('first day of this month');
+            $end = new DateTime($enddate);
+            $end->modify('first day of next month');
+            $interval = DateInterval::createFromDateString('1 month');
+            $period = new DatePeriod($start, $interval, $end);
+            $nummonths = 0;
+            foreach ($period as $dt) {
+                $data['months'][] = $dt->format("F");
+                $nummonths++;
+            }
+            $totalamount = $amount/$nummonths;
+            $totalamount = round($totalamount,2);
+            foreach ($data['months'] as $month){
+                $this->student_model->insertinvoicerecord($studno,$sy,$totalamount,$month);
+            }
+        }
+        redirect('portals/payment');
+    }
+
+    public function getinvoicedetails()
+    {
+        //AJAX converted to CI
+        $id = $this->input->post('sid');
+        $array = $this->student_model->getinvoicedetails($id);
+        $encode = json_encode($array);
+        echo $encode;
+    }
+
+    public function paymentsuccess()
+    {
+        $this->load->view('portals/success');
     }
 
 }
