@@ -29,6 +29,8 @@
         <!-- JQuery DataTable Css -->
         <link href="<?php echo base_url();?>assets-2/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
+
+
         <!-- Custom Css -->
         <link href="<?php echo base_url();?>assets-2/css/style.css" rel="stylesheet">
 
@@ -69,7 +71,8 @@
         <script src="<?php echo base_url();?>assets-2/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
         <script src="<?php echo base_url();?>assets-2/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="<?php echo base_url();?>assets-2/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
+        <!-- JQuery Steps Plugin Js -->
+        <script src="../../plugins/jquery-steps/jquery.steps.js"></script>
         <!-- Custom Js -->
         <script src="<?php echo base_url();?>assets-2/js/admin.js"></script>
         <script src="<?php echo base_url();?>assets-2/js/pages/forms/basic-form-elements.js"></script>

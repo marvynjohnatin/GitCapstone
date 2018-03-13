@@ -59,11 +59,20 @@
         <div class="menu">
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
-                <li>
-                    <a href="../../index.html">
-                        <i class="material-icons">home</i>
-                        <span>Home</span>
+                <li class="">
+                    <a href="javascript:void(0);">
+                        <i class="material-icons">view_list</i>
+                        <span>Students</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li class="">
+                            <a href="viewapplicant">View Applicants</a>
+                        </li>
+                        <li>
+                            <a href="createapplicant">Create Applicant</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="active">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_list</i>
@@ -117,6 +126,40 @@
                         <h2 class="card-inside-title">Basic Information</h2>
                         <div class="row clearfix">
                             <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                        <tr>
+                                            <th>Account Id</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Address</th>
+                                            <th>Contact No</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <?php foreach($parents as $parent) : ?>
+                                            <tr>
+                                                <td><?php echo $parent['Id'] ?></td>
+                                                <td><?php echo $parent['fname'] ?></td>
+                                                <td><?php echo $parent['mname'] ?></td>
+                                                <td><?php echo $parent['lname'] ?></td>
+                                                <td><?php echo $parent['address'] ?></td>
+                                                <td><?php echo $parent['contactno'] ?></td>
+                                                <td><?php echo $parent['email'] ?></td>
+                                                <td><button type="button" class="btn bg-brown waves-effect" name="buttonid" id="parentid<?php echo $parent['Id'] ?>" value="<?php echo $parent['Id'] ?>"> Fill Details </button></td>
+                                            </tr>
+                                        <?php endforeach;?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <b></b><h2>Fill Student Details</h2></b>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control" placeholder="First name" name="fname" />
@@ -135,30 +178,6 @@
 
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <select name="admission" id="admission" class="form-control show-tick">
-                                            <option value="">Year of Admission</option>
-                                            <?php
-                                            for ($x = 2000; $x <= 3000; $x++) {
-                                                echo "<option value='$x'>$x</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" placeholder="Age" name="age" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <strong>Birthday:</strong><input type="date" name="birthday" class="form-control" placeholder="Please Input Birthday">
-                                    </div>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
                                         <select name="gender" id="gender" class="form-control show-tick">
                                             <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
@@ -171,6 +190,18 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control" placeholder="Address" name="address" />
                                     </div><br>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="number" class="form-control" placeholder="Age" name="age" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <strong>Birthday:</strong><input type="date" name="birthday" class="form-control" placeholder="Please Input Birthday">
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
