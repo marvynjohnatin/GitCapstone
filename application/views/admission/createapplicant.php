@@ -110,19 +110,32 @@
     <?php echo form_open_multipart('admission/createapplicant');?>
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Add new Applicant</h2>
+            <h2>Applicant Section</h2>
         </div>
-        <!-- Input -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Input Applicant Details
-                        </h2>
-                    </div>
 
-                    <div class="body">
+         <!-- Example Tab -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                               Add New Applicant
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#details" data-toggle="tab">APPLICANT DETAILS</a></li>
+                                <li role="presentation"><a href="#requirements" data-toggle="tab">ACADEMY REQUIREMENTS</a></li>
+                         
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="details">
+                                 <div class="body">
+                                    
+                             <!-- Applicant Details -->
                         <h2 class="card-inside-title">Basic Information</h2>
                         <div class="row clearfix">
                             <div class="col-sm-12">
@@ -191,22 +204,12 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- Applicant Info -->
-        <!-- Academic Requirements -->
+                                </div>
+                        <div role="tabpanel" class="tab-pane fade" id="requirements">
 
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Academy Requirements
-                        </h2>
-                    </div>
+                         <!-- Academic Requirements -->
 
-                    <div class="body">
+                                  <div class="body">
                         <h2 class="card-inside-title">File Upload</h2>
                         <div class="row clearfix">
                             <div class="col-sm-12">
@@ -243,16 +246,17 @@
                             <button type="submit">Submit</button>
                         </div>
                     </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <!-- #END# Example Tab -->
 
 
-
-
-
-
-
+       
 
 
     </div>

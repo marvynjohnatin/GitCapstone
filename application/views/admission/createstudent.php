@@ -109,24 +109,32 @@
     <?php echo form_open_multipart('admission/create');?>
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Add new Student</h2>
+            <h2>Admission Section</h2>
         </div>
         <!-- Input -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Input Student Details
-                        </h2>
-                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Add New Student
+                            </h2>
+                          
+                        </div>
+                        <div class="body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" data-toggle="tab">STUDENT DETAILS</a></li>
+                                <li role="presentation"><a href="#profile" data-toggle="tab">PARENT AND GUARDIAN DETAILS</a></li>
+                                <li role="presentation"><a href="#messages" data-toggle="tab">PARENT ACCOUNT</a></li>
+                                
+                            </ul>
 
-
-                    <div class="body">
-                        <h2 class="card-inside-title">Basic Information</h2>
-                        <div class="row clearfix">
-                            <div class="col-sm-12">
-                                <div class="table-responsive">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                
+                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                    <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                         <tr>
@@ -159,305 +167,478 @@
                                 </div>
 
 
-                                <b></b><h2>Fill Student Details</h2></b>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="First name" name="fname" />
+                                <div class="body">
+
+                                <b></b><h3>Fill Student Details</h3></b>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">First Name:</label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Middle name" name="mname" />
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="First name" name="fname" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Last name" name="lname" />
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Middle Name:</label>
                                     </div>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <select name="gender" id="gender" class="form-control show-tick">
-                                            <option value="">Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                              <input type="text" class="form-control" placeholder="Middle name" name="mname" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                  </div>
 
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Address" name="address" />
-                                    </div><br>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" placeholder="Age" name="age" />
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Last Name:</label>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <strong>Birthday:</strong><input type="date" name="birthday" class="form-control" placeholder="Please Input Birthday">
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" placeholder="Last name" name="lname" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                  </div>
 
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Birthplace" name="birthplace" />
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Gender:</label>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" name="contactno" placeholder="Ex: 09XXXXXXXXX" class = "form-control">
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                               <select name="gender" id="gender" class="form-control show-tick">
+                                                <option value="">Select Gender</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                  </div>
 
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="email" name="email" class="form-control email" placeholder="Ex: juandelacruz@mail.com">
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Address:</label>
                                     </div>
-                                </div>
-
-
-                                <div class="row clearfix">
-                                <div class="col-sm-12">
-                                <select name="level" id="level" class="form-control show-tick">
-                                    <option value="" selected="selected">Select Level</option>
-                                </select>
-                                <br>
-                                <select name="grade" id="grade" class="form-control show-tick">
-                                    <option value="" selected="selected">Select Grade </option>
-                                </select>
-                                </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label> Upload Image</label><br>
-                                    <input type="file" name="userfile" onchange="readURL(this);"    >
-                                </div><img id="imagetag"  height="160" width="200">
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- Student Info -->
-
-        <!-- Entrance Exam Info -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Entrance Exam Details
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <h2 class="card-inside-title">Basic Information</h2>
-                        <div class="row clearfix">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Exam Grade" name="examgrade" />
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" placeholder="Address" name="address" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <select name="examremark" class="form-control show-tick">
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Age:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" class="form-control" placeholder="Age" name="age" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Birthday:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                               <input type="date" name="birthday" class="form-control" placeholder="Please Input Birthday">
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Birth Place:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                             <input type="text" class="form-control" placeholder="Birthplace" name="birthplace" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Contact:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                             <input type="text" pattern="[0-9]{11}" name="contactno" placeholder="Ex: 09XXXXXXXXX" class = "form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Email:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                             <input type="email" name="email" class="form-control email" placeholder="Ex: juandelacruz@mail.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Level:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                             <select name="level" id="level" class="form-control show-tick">
+                                                <option value="" selected="selected">Select Level</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Year:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                            <div class="form-line">
+                                               <select name="grade" id="grade" class="form-control show-tick">
+                                                <option value="" selected="selected">Select Grade </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Image:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                               <input type="file" name="userfile" onchange="readURL(this);">
+                                               <br>
+                                                <img id="imagetag"  height="200" width="200">
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- Entrance Exam Info -->
+                                 <b></b><h3>Entrance Exam Details</h3></b><br>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Exam Grade:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Exam Grade" name="examgrade" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Exam Remarks:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="examremark" class="form-control show-tick">
                                             <option value="PASS" selected="selected">PASS </option>
                                             <option value="FAIL" selected="selected">FAIL </option>
                                         </select>
+                                        </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- #END# Entrance Exam Details -->
-
-        <!-- Father Info -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Father Details
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <h2 class="card-inside-title">Basic Information</h2>
-                        <div class="row clearfix">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="First name" id="fatherfname" name="fatherfname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Middle name" id="fathermname" name="fathermname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Last name" id="fatherlname" name="fatherlname" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" id="fathercontactno" name="fathercontactno"  placeholder="Contact: 09XXXXXXXXX" class = "form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="email" id="fatheremail" name="fatheremail"  class="form-control email" placeholder="Ex: juandelacruz@mail.com">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control"  placeholder="fatheroccupation" id="fatheroccupation" name="fatheroccupation" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- #END# Father Details -->
-
-        <!-- Mother Info -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Mother Details
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <h2 class="card-inside-title">Basic Information</h2>
-                        <div class="row clearfix">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="First name" id="motherfname" name="motherfname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Middle name" id="mothermname" name="mothermname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Last name" id="motherlname" name="motherlname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" id="mothercontactno" name="mothercontactno" placeholder="Contact: 09XXXXXXXXX" class = "form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="email" id="motheremail" name="motheremail" class="form-control email" placeholder="Ex: juandelacruz@mail.com">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="motheroccupation" id="motheroccupation" name="motheroccupation" />
-                                    </div>
-                                </div>
-
-
-
+                                  </div>
                             </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- #END# Mother Details -->
-
-        <!-- Guardian Info -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Guardian Details
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <h2 class="card-inside-title">Basic Information</h2>
-                        <div class="row clearfix">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="First name" id="guardianfname" name="guardianfname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Middle name" id="guardianmname" name="guardianmname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="Last name" id="guardianlname" name="guardianlname" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" pattern="[0-9]{11}" id="guardiancontactno" name="guardiancontactno" placeholder="Ex: 09XXXXXXXXX" class = "form-control">
-                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="email" id="guardianemail" name="guardianemail" class="form-control email" placeholder="Ex: juandelacruz@mail.com">
+
+                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                <div class="body">
+                                <!-- Father Info -->
+                                    <b></b><h3>Father Details</h3></b><br>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">First Name:</label>
                                     </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                             <input type="text" class="form-control" placeholder="First name" id="fatherfname" name="fatherfname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Middle Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Middle name" id="fathermname" name="fathermname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Last Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                              <input type="text" class="form-control" placeholder="Last name" id="fatherlname" name="fatherlname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Contact Number:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" pattern="[0-9]{11}" id="fathercontactno" name="fathercontactno"  placeholder="Contact: 09XXXXXXXXX" class = "form-control">
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Email:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                           <input type="email" id="fatheremail" name="fatheremail"  class="form-control email" placeholder="Ex: juandelacruz@mail.com">
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Occupation:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                           <input type="text" class="form-control"  placeholder="Occupation" id="fatheroccupation" name="fatheroccupation" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <!-- Father Info -->
+
+                                  <!-- Mother Info -->
+                                    <b></b><h3>Mother Details</h3></b><br>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">First Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="First name" id="motherfname" name="motherfname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Middle Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Middle name" id="mothermname" name="mothermname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Last Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                              <input type="text" class="form-control" placeholder="Last name" id="motherlname" name="motherlname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Contact Number:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                             <input type="text" pattern="[0-9]{11}" id="mothercontactno" name="mothercontactno" placeholder="Contact: 09XXXXXXXXX" class = "form-control">
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Email:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                             <input type="email" id="motheremail" name="motheremail" class="form-control email" placeholder="Ex: juandelacruz@mail.com">
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Occupation:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Occupation" id="motheroccupation" name="motheroccupation" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <!-- Mother Info -->
+
+                                  <!-- Guardian Info -->
+                                    <b></b><h3>Guardian Details</h3></b><br>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">First Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                           <input type="text" class="form-control" placeholder="First name" id="guardianfname" name="guardianfname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Middle Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Middle name" id="guardianmname" name="guardianmname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Last Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                              <input type="text" class="form-control" placeholder="Last name" id="guardianlname" name="guardianlname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Contact Number:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                             <input type="text" pattern="[0-9]{11}" id="guardiancontactno" name="guardiancontactno" placeholder="Ex: 09XXXXXXXXX" class = "form-control">
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Email:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="email" id="guardianemail" name="guardianemail" class="form-control email" placeholder="Ex: juandelacruz@mail.com">
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Occupation:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Occupation" id="guardianoccupation" name="guardianoccupation" />
+                                        </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <!-- Guardian Info -->
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" placeholder="guardianoccupation" id="guardianoccupation" name="guardianoccupation" />
-                                    </div>
                                 </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- #END# Guardian Details -->
+                                <div role="tabpanel" class="tab-pane fade" id="messages">
+                                
+                                <!-- Account details -->
 
-        <!-- Account details -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                List Of Parent Account
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <div class="table-responsive">
+                                <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
@@ -487,59 +668,122 @@
                                     <?php endforeach;?>
                                     </tbody>
                                 </table>
-                            </div>
-                            <h2>
+                                </div>
+
+                    <div class="body">
+                            
+                            <h3>
                                 Account Details
 
-                            </h2>
+                            </h3>
+
                             <button type="button" class="btn bg-green waves-effect" name="buttonfatherid" id="btnfather" > Use Father Details </button>
                             <button type="button" class="btn bg-pink waves-effect" name="buttonmotherid" id="btnmother" > Use Mother Details </button>
                             <button type="button" class="btn bg-gray waves-effect" name="buttonguardianid" id="btnguardian" > Use Guardian Details </button>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="Account Id"  id="accountid" readonly/>
-                                    <input type="hidden" class="form-control" name="accountid" id="accounthidid" />
-                                </div>
+                            <br>
+                            <br>
+
+                             <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Account ID:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                             <input type="text" class="form-control" placeholder="Account Id"  id="accountid" readonly/>
+                                             <input type="hidden" class="form-control" name="accountid" id="accounthidid" />
+                                        </div>
+                                        </div>
+                                    </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="First name"  id="accountfname" readonly />
-                                    <input type="hidden" class="form-control" name="accountfname" id="accounthidfname" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="Middle name"  id="accountmname" readonly />
-                                    <input type="hidden" class="form-control" name="accountmname" id="accounthidmname" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="Last name"  id="accountlname" readonly/>
-                                    <input type="hidden" class="form-control" name="accountlname" id="accounthidlname" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" pattern="[0-9]{11}"  class="form-control" id="accountcontactno" placeholder="Contact: 099999999999" readonly>
-                                    <input type="hidden" class="form-control" name="accountcontactno" id="accounthidcontactno" />
-                                </div>
+                            <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">First Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                             <input type="text" class="form-control" placeholder="First name"  id="accountfname" readonly />
+                                            <input type="hidden" class="form-control" name="accountfname" id="accounthidfname" />
+                                        </div>
+                                        </div>
+                                    </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="email" class="form-control" placeholder="juandelacruz@mail.com" id="accountemail"  readonly/>
-                                    <input type="hidden" class="form-control" name="accountemail" id="accounthidemail" />
-                                </div>
+                            <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Middle Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                         <input type="text" class="form-control" placeholder="Middle name"  id="accountmname" readonly />
+                                        <input type="hidden" class="form-control" name="accountmname" id="accounthidmname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                             <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Last Name:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="Last name"  id="accountlname" readonly/>
+                                          <input type="hidden" class="form-control" name="accountlname" id="accounthidlname" />
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Contact Number:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                         <input type="text" pattern="[0-9]{11}"  class="form-control" id="accountcontactno" placeholder="Contact: 099999999999" readonly>
+                                        <input type="hidden" class="form-control" name="accountcontactno" id="accounthidcontactno" />
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="email_address_2">Email:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                       <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="email" class="form-control" placeholder="juandelacruz@mail.com" id="accountemail"  readonly/>
+                                            <input type="hidden" class="form-control" name="accountemail" id="accounthidemail" />
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <br>
+                            <br>
+
+                              <input type="submit" value = "SUBMIT ALL DETAILS!" class="btn btn-block btn-lg btn-warning waves-effect">
+                        </div>
+
+                </div>
+                <!-- Account details -->
+                              
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <!-- END Account details -->
+        </div>
 
-<input type="submit">
+
+
 
 
 
