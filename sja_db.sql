@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2018 at 08:29 AM
+-- Generation Time: Mar 14, 2018 at 04:07 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -161,7 +161,8 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`Id`, `parentrole`, `fname`, `lname`, `mname`, `address`, `contactno`, `email`, `occupation`, `username`, `password`) VALUES
-(1, 'mother', 'Mario', 'Atin', 'Caymo', 'Nueva Ecija', '09154095632', 'mario@gmail.com', 'Engineer', 'marioatin0', 'kXxAUJ');
+(1, 'father', 'Mario', 'Atin', 'Caymo', 'Nueva Ecija', '09154095632', 'mario@gmail.com', 'Engineer', 'marioatin0', 'kXxAUJ'),
+(2, 'mother', 'Lerma', 'Maralit', 'Corachea', 'Pangao Ibaan Batangas', '09154095632', 'asd@asd', 'Sewer', 'lermamaralit', 'UqmtFo');
 
 -- --------------------------------------------------------
 
@@ -171,6 +172,7 @@ INSERT INTO `parent` (`Id`, `parentrole`, `fname`, `lname`, `mname`, `address`, 
 
 CREATE TABLE `payment` (
   `Id` int(11) NOT NULL,
+  `transid` text NOT NULL,
   `studentnumber` text NOT NULL,
   `schoolyear` text NOT NULL,
   `month` text NOT NULL,
@@ -185,8 +187,63 @@ CREATE TABLE `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`Id`, `studentnumber`, `schoolyear`, `month`, `paymentmode`, `paymenttype`, `amount`, `paid_status`, `payment_date`) VALUES
-(1, '20181000', '2017-2018', 'Upon Enrollment', 'paypal', 'Monthly', '44200', 'Yes', 'March 14, 2018 3:00:pm  ');
+INSERT INTO `payment` (`Id`, `transid`, `studentnumber`, `schoolyear`, `month`, `paymentmode`, `paymenttype`, `amount`, `paid_status`, `payment_date`) VALUES
+(3, '', '20181000', '2017-2018', 'Initial', 'paypal', 'Monthly', '2000', 'Yes', 'March 14, 2018 4:02:pm  '),
+(4, '5S436160GN9923157', '20181000', '2017-2018', 'June', 'paypal', 'Monthly', '4680', 'Yes', 'March 14, 2018 4:37:pm  '),
+(5, 'PAY-1PK65643T00876626LKUOGZQ', '20181000', '2017-2018', 'July', 'paypal', 'Monthly', '4680', 'Yes', 'March 14, 2018 4:56:pm  '),
+(6, '09Y67141T4948374C', '20181000', '2017-2018', 'August', 'Paypal', 'Monthly', '4680', 'Yes', 'March 14, 2018 5:45:pm  '),
+(7, '', '20181000', '2017-2018', 'September', '', 'Monthly', '4680', 'No', ''),
+(8, '', '20181000', '2017-2018', 'October', '', 'Monthly', '4680', 'No', ''),
+(9, '', '20181000', '2017-2018', 'November', '', 'Monthly', '4680', 'No', ''),
+(10, '', '20181000', '2017-2018', 'December', '', 'Monthly', '4680', 'No', ''),
+(11, '', '20181000', '2017-2018', 'January', '', 'Monthly', '4680', 'No', ''),
+(12, '', '20181000', '2017-2018', 'February', '', 'Monthly', '4680', 'No', ''),
+(13, '', '20181000', '2017-2018', 'March', '', 'Monthly', '4680', 'No', ''),
+(14, '67M37245NA078634E', '20182000', '2017-2018', 'Initial', 'Paypal', 'Monthly', '2000', 'Yes', 'March 14, 2018 5:55:pm  '),
+(15, '', '20182000', '2017-2018', 'June', '', 'Monthly', '5150', 'No', ''),
+(16, '', '20182000', '2017-2018', 'July', '', 'Monthly', '5150', 'No', ''),
+(17, '', '20182000', '2017-2018', 'August', '', 'Monthly', '5150', 'No', ''),
+(18, '', '20182000', '2017-2018', 'September', '', 'Monthly', '5150', 'No', ''),
+(19, '', '20182000', '2017-2018', 'October', '', 'Monthly', '5150', 'No', ''),
+(20, '', '20182000', '2017-2018', 'November', '', 'Monthly', '5150', 'No', ''),
+(21, '', '20182000', '2017-2018', 'December', '', 'Monthly', '5150', 'No', ''),
+(22, '', '20182000', '2017-2018', 'January', '', 'Monthly', '5150', 'No', ''),
+(23, '', '20182000', '2017-2018', 'February', '', 'Monthly', '5150', 'No', ''),
+(24, '', '20182000', '2017-2018', 'March', '', 'Monthly', '5150', 'No', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `section`
+--
+
+CREATE TABLE `section` (
+  `Id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `grade` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `strand` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `section`
+--
+
+INSERT INTO `section` (`Id`, `name`, `grade`, `level`, `strand`) VALUES
+(1, 'Obedience', '5', 'Elementary', 'N/A'),
+(2, 'Chastity', '5', 'Elementary', 'N/A'),
+(3, 'Wisdom', '6', 'Elementary', 'N/A'),
+(4, 'Knowledge', '6', 'Elementary', 'N/A'),
+(5, 'St. Joseph', '11', 'SHS', 'ABM'),
+(6, 'St. Matthew', '11', 'SHS', 'STEM'),
+(7, 'St. Michael', '11', 'SHS', 'HUMSS'),
+(8, 'St. Francis', '12', 'SHS', 'ABM'),
+(9, 'St. Patrick', '12', 'SHS', 'ABM'),
+(10, 'St. Valentine', '12', 'SHS', 'HUMSS'),
+(11, 'Basalt', '7', 'Highschool', 'N/A'),
+(12, 'Granite', '7', 'Highschool', 'N/A'),
+(13, 'Recto', '8', 'Highschool', 'N/A'),
+(14, 'Roxas', '8', 'Highschool', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -298,7 +355,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `parentaccountid`, `email`, `current_level`, `current_year`, `current_strand`, `current_section`, `status_enrolled`, `stud_pic`, `examgrade`, `examremark`, `examdate`, `password`, `account_status`, `fatherfname`, `fathermname`, `fatherlname`, `fatheroccupation`, `fathercontactno`, `fatheremail`, `motherfname`, `mothermname`, `motherlname`, `motheroccupation`, `mothercontactno`, `motheremail`, `guardianfname`, `guardianmname`, `guardianlname`, `guardiancontactno`, `guardianemail`, `guardianoccupation`, `paymentperiod`, `discounttype`, `discount`, `honorcertificate`, `birthcertificate`, `form137`, `form9`, `goodmoral`, `baptismal`, `admit_status`) VALUES
-(1, '20181000', 'Marvyn', 'Atin', 'Casao', '20', '1997-11-16', 'Male', '#149 Tulay, Ibaan, Batangas', 'Ibaan', '09154095632', '1', 'marvynjohnatin@gmail.com', 'Highschool', '8', 'N/A', '', 'Enrolled', '1451500_700507843300899_1312591366_n.jpg', '95', 'PASS', 0, 'Allforlyadel24', 'Activated', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evelyn', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'Elene', 'Casao', 'Casao', '09154095632', 'elena@email', 'Something', '', 'EB_Scholar', '10%', 'Specimen_England_and_Wales_Long_Birth_Certificate.jpg', '1520607817.jpg', 'certificate-of-good-moral-character-1-638.jpg', 'Certificate-of-Honor-Template.jpg', 'Forms.png', 'free-printable-baptism-certificate.jpg', 'Admitted');
+(1, '20181000', 'Marvyn', 'Atin', 'Casao', '20', '1997-11-16', 'Male', '#149 Tulay, Ibaan, Batangas', 'Ibaan', '09154095632', '1', 'marvynjohnatin@gmail.com', 'Highschool', '8', 'N/A', '', 'Enrolled', '1451500_700507843300899_1312591366_n.jpg', '95', 'PASS', 0, 'Allforlyadel24', 'Activated', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evelyn', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'Elene', 'Casao', 'Casao', '09154095632', 'elena@email', 'Something', '', 'EB_Scholar', '10%', 'Specimen_England_and_Wales_Long_Birth_Certificate.jpg', '1520607817.jpg', 'certificate-of-good-moral-character-1-638.jpg', 'Certificate-of-Honor-Template.jpg', 'Forms.png', 'free-printable-baptism-certificate.jpg', 'Admitted'),
+(2, '20182000', 'Ledayl', 'Maralit', 'Corachea', '20', '1998-06-08', 'Female', 'Pangao, Ibaan, Batangas', 'Pangao Ibaan', '09154095632', '2', 'ledaylmaralit@yahoo.com', 'Highschool', '7', 'N/A', '', 'Enrolled', '1459199_700509086634108_1651583540_n.jpg', '100', 'PASS', 2012, 'atin123', 'Activated', 'Vicente', 'Maralit', 'Maralit', 'Pigger', '09154095632', 'asd@asd', 'Lerma', 'Corachea', 'Maralit', 'Sewer', '09154095632', 'asd@asd', 'Mario', 'Caymo', 'Atin', '09154095632', 'mario@gmail.com', 'Engineer', '', '', '', 'Specimen_England_and_Wales_Long_Birth_Certificate.jpg', '1520607817.jpg', 'certificate-of-good-moral-character-1-638.jpg', 'Certificate-of-Honor-Template.jpg', 'Forms.png', 'free-printable-baptism-certificate.jpg', 'Admitted');
 
 -- --------------------------------------------------------
 
@@ -375,7 +433,8 @@ INSERT INTO `subjects` (`subject_ID`, `subject_code`, `subject_name`, `subject_l
 (51, 'Math9', 'Mathematics 9', 'JHS', '9', '', 'N/A', ''),
 (52, 'AP4', 'Araling Panlipunan 4', 'JHS', '10', '', 'N/A', ''),
 (53, 'TLE4', 'Technology and Livelihood 4', 'JHS', '10', '', 'N/A', ''),
-(54, 'Math10', 'Mathematics 10', 'JHS', '10', '', 'N/A', '');
+(54, 'Math10', 'Mathematics 10', 'JHS', '10', '', 'N/A', ''),
+(55, 'Math', 'Math', 'Elementary', 'Grade 2', '', 'N/A', 'Sheng');
 
 -- --------------------------------------------------------
 
@@ -385,7 +444,6 @@ INSERT INTO `subjects` (`subject_ID`, `subject_code`, `subject_name`, `subject_l
 
 CREATE TABLE `teacher` (
   `Id` int(11) NOT NULL,
-  `teacher_ID` varchar(50) NOT NULL,
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `mname` text NOT NULL,
@@ -403,8 +461,17 @@ CREATE TABLE `teacher` (
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`Id`, `teacher_ID`, `fname`, `lname`, `mname`, `password`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `faculty_pic`) VALUES
-(1, '20151', 'Von Chester', 'Calabia', 'Cariman', 'calabia9015', '', '', '', '', '', '', 'noimage.jpg');
+INSERT INTO `teacher` (`Id`, `fname`, `lname`, `mname`, `password`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `faculty_pic`) VALUES
+(1, 'Von Chester', 'Calabia', 'Cariman', 'calabia9015', '20', '12/12/2000', 'Male', 'Ibaan', 'Ibaan', '09999999', 'noimage.jpg'),
+(2, 'Mark', 'De Vera', 'Cabungcal', 'password123', '26', '02/02/1996', 'Male', 'Pulo', 'Pulo', '0999999', ''),
+(3, 'Clarisse', 'De Vera', 'Cabungcal', 'password123', '24', '09/01/1998', 'Female', 'Pangasinan', 'Pangasinan', '0999999', ''),
+(4, 'Gim', 'Magpantay', 'Macatangay', 'password123', '27', '08/08/1996', 'Male', 'Sabang', 'Sabang', '09999999', ''),
+(5, 'Guian', 'Subade', 'Morcilla', 'password123', '28', '05/01/1990', 'Male', 'Brgy 1', 'Brgy 1', '09999999', ''),
+(6, 'Magel', 'Panganiban', 'Dela Cruz', 'password123', '20', '05/01/1960', 'Female', 'Tanauan', 'Tanauan', '099999', ''),
+(7, 'Shayne', 'Matsuda', 'Bautista', 'password123', '40', '03/07/1980', 'Female', 'Caloocan', 'Caloocan', '099999', ''),
+(8, 'Carmela', 'Macatangay', 'Villamater', 'password123', '29', '07/29/1970', 'Female', 'Mabini', 'Mabini', '09999999', ''),
+(9, 'Mary Cane', 'Bandohan', 'Cruz', 'passsword123', '38', '06/09/1976', 'Female', 'Narkabowl', 'Narkabowl', '09999999', ''),
+(10, 'Catherine', 'Cabungcal', 'De Guzman', 'password123', '22', '01/01/1999', 'Female', 'Granja', 'Granja', '09999999', '');
 
 -- --------------------------------------------------------
 
@@ -427,7 +494,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `fname`, `lname`, `user_type`, `user_pic`) VALUES
-(1, 'irisjoshtanyag', 'irisjoshuatanyag', 'Iris Joshua', 'Tanyag', 'Registrar', 'noimage.jpg'),
+(1, 'registrar', 'registrar123', 'Iris Joshua', 'Tanyag', 'Registrar', 'noimage.jpg'),
 (2, 'admission', 'password123', 'AdmissionFname', 'AdmissionLname', 'Admission', 'noimage.jpg'),
 (3, 'systemadmin', 'password123', 'systemadminfname', 'systemadminlname', 'SystemAdmin', 'noimage.jpg');
 
@@ -472,6 +539,12 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `section`
+--
+ALTER TABLE `section`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
@@ -499,8 +572,7 @@ ALTER TABLE `subjects`
 -- Indexes for table `teacher`
 --
 ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `teacher_ID` (`teacher_ID`);
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `users`
@@ -540,13 +612,19 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `section`
+--
+ALTER TABLE `section`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -564,19 +642,13 @@ ALTER TABLE `strand`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
---
--- AUTO_INCREMENT for table `teacher`
---
-ALTER TABLE `teacher`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `users`
