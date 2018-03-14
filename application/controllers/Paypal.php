@@ -184,7 +184,7 @@ class Paypal extends CI_Controller
             $itemname = $trans[0]->getItemList()->getItems()[0]->getName();
             $itemdescription = $trans[0]->getItemList()->getItems()[0]->getDescription();
             $price = $trans[0]->getItemList()->getItems()[0]->getPrice();
-            $this->paypal->create($itemid,$itemname,$itemdescription,$price);
+            $this->paypal->create($itemid,$itemname,$itemdescription,$price,$saleId);
             $this->session->set_flashdata('success_msg','Payment success');
             redirect('portals/paymentsuccess');
         }

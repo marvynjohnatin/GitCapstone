@@ -141,14 +141,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Level:<font color = "green"> <b>Highschool</b></font>
+                    Current Level:<font color = "green"> <b><?php echo $results['current_level'] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Year:<font color = "green"> <b>Grade 7</b></font>
+                    Current Grade:<font color = "green"> <b><?php echo $results['current_year'] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
@@ -158,29 +158,17 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                    Current Section: <font color = "green"> <b>St. Lorenzo</b></font>
+                    Current Section: <font color = "green"> <b><?php echo $results['current_section'] ?></b></font>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                Current School Year: <font color = "green"> <b>2013-2014</b></font>
+                Current School Year: <font color = "green"> <b><?php echo $sy ?></b></font>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                    Total Amount Due:<font color = "green"> <b>P 7,000.00</b></font>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
 
                              <div class="row clearfix">
@@ -190,115 +178,41 @@
                                     <thead>
                                         <tr>
                                         <th>Detail Number</th>
-                                        <th>Payment Name</th>
+                                        <th>Month</th>
                                         <th>Amount</th>
-                                        <th>Due Date</th>
                                         <th>Status</th>
                                         <th>Payment Type</th>
                                         <th>Payment Date</th>
-                                        <th>Time of Payment</th>           
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                        <td>1</td>
-                                        <td>Upon Enrollment</td>
-                                        <td>1,000.00</td>
-                                        <td>04/16/2018</td>
-                                        <td><font color = "green">Paid</font></td>
-                                        <td>Cash</td>
-                                        <td>04/14/2018</td>
-                                        <td>2:00 A.M.</td>
-                                        </tr>
 
+                                    <?php foreach ($fees as $fee): ?>
                                         <tr>
-                                        <td>2</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                        <td><font color = "green">Paid</font></td>
-                                        <td>Cash</td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
+                                        <td><?php echo $fee['Id'] ?> </td>
+                                        <td><?php echo $fee['month'] ?></td>
+                                        <td><?php echo 'Php '.number_format($fee['amount'], 2, '.', ','); ?></td>
+                                            <?php if($fee['paid_status'] == 'Yes'):?>
+                                            <td><font color = "green">Paid</font></td>
+                                            <?php endif;?>
+                                            <?php if($fee['paid_status'] == 'No'):?>
+                                                <td><font color = "red">Not Paid</font></td>
+                                            <?php endif;?>
+                                            <?php if($fee['paid_status'] == 'Pending'):?>
+                                            <td><font color = "blue">Pending</font></td>
+                                            <?php endif;?>
+                                            <?php if($fee['paymentmode'] == ''):?>
+                                                <td><font color = "red">N/A</font></td>
+                                            <?php else:?>
+                                                <td><?php echo $fee['paymentmode'] ?></td>
+                                            <?php endif;?>
 
-                                        <tr>
-                                        <td>3</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                         <td><font color = "red">Not Paid Yet</font></td>
-                                         <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
+                                            <?php if($fee['payment_date'] == ''):?>
+                                                <td><font color = "red">N/A</font></td>
+                                            <?php else:?>
+                                                <td><?php echo $fee['payment_date'] ?></td>
+                                            <?php endif;?>
                                         </tr>
-
-                                        <tr>
-                                        <td>4</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                         <td><font color = "red">Not Paid Yet</font></td>
-                                         <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
-
-                                        <tr>
-                                        <td>5</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                         <td><font color = "red">Not Paid Yet</font></td>
-                                         <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
-
-                                        <tr>
-                                        <td>6</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                         <td><font color = "red">Not Paid Yet</font></td>
-                                         <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
-
-                                        <tr>
-                                        <td>7</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                         <td><font color = "red">Not Paid Yet</font></td>
-                                         <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
-
-                                        <tr>
-                                        <td>8</td>
-                                        <td>Monthly</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                         <td><font color = "red">Not Paid Yet</font></td>
-                                         <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
-                                        
-                                         <tr>
-                                        <td>9</td>
-                                        <td>Before Finals</td>
-                                        <td>1,000.00</td>
-                                        <td>05/16/2018</td>
-                                        <td><font color = "red">Not Paid Yet</font></td>
-                                        <td></td>
-                                        <td>05/10/2018</td>
-                                        <td>7:30 A.M.</td>
-                                        </tr>
-
+                                    <?php endforeach;?>
                                     </tbody>
                                 </table>
                             </div>
@@ -310,137 +224,7 @@
                 </div>
             </div>
             <!-- #END# Input -->
-            <!-- Textarea -->
 
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                <font color = "red"><b>Total Fee Breakdown</b></font>
-                            </h2>
-                        </div>
-                        <div class="body">
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                    Total:<font color = "green"> <b>P 10,000.00</b></font>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                             <div class="row clearfix">
-                                <div class="col-sm-12">
-                                <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Description</th>
-                                            <th>Total</th>
-                                                 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tuition Fee</td>
-                                            <td>P 3,000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Miscellaneous Fee</td>
-                                            <td>P 2,000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Entrance Fee</td>
-                                            <td>P 1,500.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Energy Fee</td>
-                                            <td>P 1,000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Book Fee</td>
-                                            <td>P 1,000.00</td>
-                                        </tr>   
-                                    </tbody>
-                                </table>
-                                </div>
-                                </div>
-                            
-                            </div>
-
-
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                <font color = "red"><b>Student Fee Discounts</b></font>
-                            </h2>
-                        </div>
-                        <div class="body">
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                    Total:<font color = "green"> <b>P 3,000.00</b></font>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                             <div class="row clearfix">
-                                <div class="col-sm-12">
-                                <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Description</th>
-                                            <th>Total</th>
-                                                 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>ESC</td>
-                                            <td>P 3,000.00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                                </div>
-                            
-                            </div>
-
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                <div class="alert alert-danger">
-                                <strong>All Discounts!</strong> Only affect the tuition fee.
-                                </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             
         </div>

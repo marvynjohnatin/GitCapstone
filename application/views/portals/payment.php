@@ -180,6 +180,7 @@
                                     </thead>
                                     <tbody>
                                                 <?php foreach ($invoices as $invoice):?>
+
                                                     <tr>
                                                         <td><?php echo $invoice['Id']?></td>
                                                         <?php if ($invoice['month'] == 'Initial' ||$invoice['month'] == 'Upon Enrollment'): ?>
@@ -235,7 +236,7 @@
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
                                         <?php echo form_open('paypal/create_payment_with_paypal')?>
-                                        <input type="hidden" name="item_name" value="Payment Fee SJA" > </input>
+                                        <input type="hidden" name="item_name" value="<?php echo 'Payment Fee for SY -'.$sy[0]?>" > </input>
                                         Id:<input type="text" id="paymentid" readonly>
                                         <input type="hidden" id="hiddenpaymentid" name="payment_number" > </input>
                                         Month:<input type="text" id="month" readonly><br>

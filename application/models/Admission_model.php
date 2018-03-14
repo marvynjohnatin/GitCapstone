@@ -92,7 +92,7 @@ class Admission_model extends CI_Model
             $fatherusername = $this->usernamechecker($this->input->post('fatherfname'), $this->input->post('fatherlname'));
             $fatherpassword = $this->generateRandomstring();
             $fatherarr = array(
-                'parentrole' => 'mother',
+                'parentrole' => 'father',
                 'fname' => $this->input->post('fatherfname'),
                 'mname' => $this->input->post('fathermname'),
                 'lname' => $this->input->post('fatherlname'),

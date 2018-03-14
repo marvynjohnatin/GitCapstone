@@ -130,20 +130,8 @@ class Portals extends CI_Controller
             die('Please log in');
         }
         $data['results'] = $this->student_model->get_details();
-        if ($payment = 'Monthly') {
-            $startdate = $this->student_model->getstart();
-            $enddate = $this->student_model->getend();
-            $start = new DateTime($startdate);
-            $start->modify('first day of this month');
-            $end = new DateTime($enddate);
-            $end->modify('first day of next month');
-            $interval = DateInterval::createFromDateString('1 month');
-
-            $period = new DatePeriod($start, $interval, $end);
-            foreach ($period as $dt) {
-                $data['months']['month'][] = $dt->format("F");
-            }
-        }
+        $data['sy'] = $this->student_model->getacademicsy();
+        $data['fees'] = $this->student_model->getallinvoices($data['results']['studentnumber'],$data['sy']);
         if(empty($data['results']))
         {
             show_404();
@@ -266,14 +254,14 @@ class Portals extends CI_Controller
             }
             $totalamount = $amount/$nummonths;
             $totalamount = round($totalamount,2);
-            $this->student_model->insertinvoicerecord($studno,$sy,$initialamount,'Initial');
+            $this->student_model->insertinvoicerecord($studno,$sy,$initialamount,'Initial',$payment);
             foreach ($data['months'] as $month){
-                $this->student_model->insertinvoicerecord($studno,$sy,$totalamount,$month);
+                $this->student_model->insertinvoicerecord($studno,$sy,$totalamount,$month,$payment);
             }
         }
         if ($payment == 'Full')
         {
-                $this->student_model->insertinvoicerecord($studno,$sy,$total,'Upon Enrollment');
+                $this->student_model->insertinvoicerecord($studno,$sy,$total,'Upon Enrollment',$payment);
         }
         redirect('portals/payment');
     }

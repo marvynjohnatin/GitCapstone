@@ -11,13 +11,14 @@ class Paypal_model extends CI_Model {
 
 	/* This function create new Service. */
 
-	function create($itemid,$itemname,$itemdescription,$price) {
+	function create($itemid,$itemname,$itemdescription,$price,$transid) {
 
         date_default_timezone_set("Asia/Manila");
         $datetime = date('F j, Y g:i:a  ');
         $data = array(
                 'paid_status' => 'Yes',
-                'paymentmode' => 'paypal',
+                'paymentmode' => 'Paypal',
+                'transid' => $transid,
                 'payment_date' => $datetime
         );
         if($itemdescription == 'Initial' || 'Upon Enrollment') {

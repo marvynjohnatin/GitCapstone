@@ -6,39 +6,15 @@ class Registrars extends CI_Controller {
 	    if(!isset($this->session->userdata['logged_in'])){
         die('Please log in');
          }
+        if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Registrar'){
+            die('Please log in');
+        }
+        $data['account'] = $this->registrar_model->getuserdetails($this->session->userdata['user_id']);
         $data['students'] = $this->registrar_model->getstudents();
-		$this->load->view('templates/header-2');
+		$this->load->view('templates/header-basic');
         $this->load->view('registrar/studentlist', $data);
 	}
 
-
-
-	public function login(){
-    $this->load->view('registrar/login');
-    $username = $this->input->post('username');
-    $password = $this->input->post('password');
-    //checking if username isset if not session comment will not be created.
-        if(isset($username))
-    {
-        $user_id = $this->login_model->loginregistrar($username,$password);
-        if($user_id){
-            $user_data= array(
-                'user_id' =>  $user_id[0]['user_id'],
-                'fname' => $user_id[0]['fname'],
-                'accounttype' => $user_id[0]['user_type'],
-                'username' => $username,
-                'logged_in' => true
-            );
-            $this->session->set_userdata($user_data);
-            redirect('registrar/studentlist');
-        }
-        else{
-
-            $this->session->set_flashdata('login_failed','Login Failed!');
-            redirect('registrar/login');
-        }
-    }
-    }
 
     public function logout(){
         //killing session

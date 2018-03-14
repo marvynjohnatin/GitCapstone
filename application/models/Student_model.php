@@ -72,7 +72,7 @@ class Student_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function insertinvoicerecord($studno,$sy,$totalamount,$month)
+    public function insertinvoicerecord($studno,$sy,$totalamount,$month,$paymenttype)
     {
         $data = array(
             'studentnumber' => $studno,
@@ -97,6 +97,14 @@ class Student_model extends CI_Model{
         $this->db->where('studentnumber',$studentnumber);
         $this->db->where('schoolyear',$schoolyear);
         $this->db->where('paid_status','No');
+        $query = $this->db->get('payment');
+        return $query->result_array();
+    }
+
+    public function getallinvoices($studentnumber,$schoolyear)
+    {
+        $this->db->where('studentnumber',$studentnumber);
+        $this->db->where('schoolyear',$schoolyear);
         $query = $this->db->get('payment');
         return $query->result_array();
     }
