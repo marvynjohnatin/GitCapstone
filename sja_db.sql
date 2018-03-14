@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2018 at 10:57 AM
+-- Generation Time: Mar 14, 2018 at 08:29 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -41,8 +41,9 @@ CREATE TABLE `academic` (
 INSERT INTO `academic` (`Id`, `settingname`, `value`) VALUES
 (1, 'schoolyear', '2017-2018'),
 (2, 'startingdate', '2017-06-15'),
-(3, 'endingdate', '2018-02-15'),
-(4, 'fulldiscount', '.05');
+(3, 'endingdate', '2018-03-15'),
+(4, 'fulldiscount', '.05'),
+(5, 'initialpayment', '2000');
 
 -- --------------------------------------------------------
 
@@ -143,12 +144,14 @@ CREATE TABLE `grade` (
 
 CREATE TABLE `parent` (
   `Id` int(255) NOT NULL,
+  `parentrole` text NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
   `mname` varchar(50) NOT NULL,
   `address` varchar(250) NOT NULL,
   `contactno` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `occupation` text NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -157,8 +160,33 @@ CREATE TABLE `parent` (
 -- Dumping data for table `parent`
 --
 
-INSERT INTO `parent` (`Id`, `fname`, `lname`, `mname`, `address`, `contactno`, `email`, `username`, `password`) VALUES
-(1, 'Mario', 'Atin', 'Caymo', '', '09154095632', 'mario@gmail.com', 'marioatin', 'itsmorefunatsja');
+INSERT INTO `parent` (`Id`, `parentrole`, `fname`, `lname`, `mname`, `address`, `contactno`, `email`, `occupation`, `username`, `password`) VALUES
+(1, 'mother', 'Mario', 'Atin', 'Caymo', 'Nueva Ecija', '09154095632', 'mario@gmail.com', 'Engineer', 'marioatin0', 'kXxAUJ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `Id` int(11) NOT NULL,
+  `studentnumber` text NOT NULL,
+  `schoolyear` text NOT NULL,
+  `month` text NOT NULL,
+  `paymentmode` text NOT NULL,
+  `paymenttype` text NOT NULL,
+  `amount` text NOT NULL,
+  `paid_status` text NOT NULL,
+  `payment_date` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`Id`, `studentnumber`, `schoolyear`, `month`, `paymentmode`, `paymenttype`, `amount`, `paid_status`, `payment_date`) VALUES
+(1, '20181000', '2017-2018', 'Upon Enrollment', 'paypal', 'Monthly', '44200', 'Yes', 'March 14, 2018 3:00:pm  ');
 
 -- --------------------------------------------------------
 
@@ -222,7 +250,7 @@ CREATE TABLE `student` (
   `address` text NOT NULL,
   `placeofbirth` text NOT NULL,
   `contactno` text NOT NULL,
-  `parentid` text NOT NULL,
+  `parentaccountid` text NOT NULL,
   `email` text NOT NULL,
   `current_level` text NOT NULL,
   `current_year` text NOT NULL,
@@ -232,6 +260,7 @@ CREATE TABLE `student` (
   `stud_pic` text NOT NULL,
   `examgrade` text NOT NULL,
   `examremark` text NOT NULL,
+  `examdate` int(11) NOT NULL,
   `password` text NOT NULL,
   `account_status` text NOT NULL,
   `fatherfname` text NOT NULL,
@@ -253,17 +282,23 @@ CREATE TABLE `student` (
   `guardianemail` text NOT NULL,
   `guardianoccupation` text NOT NULL,
   `paymentperiod` text NOT NULL,
-  `scholar` text NOT NULL,
-  `discount` text NOT NULL
+  `discounttype` text NOT NULL,
+  `discount` text NOT NULL,
+  `honorcertificate` text NOT NULL,
+  `birthcertificate` text NOT NULL,
+  `form137` text NOT NULL,
+  `form9` text NOT NULL,
+  `goodmoral` text NOT NULL,
+  `baptismal` text NOT NULL,
+  `admit_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `parentid`, `email`, `current_level`, `current_year`, `current_strand`, `current_section`, `status_enrolled`, `stud_pic`, `examgrade`, `examremark`, `password`, `account_status`, `fatherfname`, `fathermname`, `fatherlname`, `fatheroccupation`, `fathercontactno`, `fatheremail`, `motherfname`, `mothermname`, `motherlname`, `motheroccupation`, `mothercontactno`, `motheremail`, `guardianfname`, `guardianmname`, `guardianlname`, `guardiancontactno`, `guardianemail`, `guardianoccupation`, `paymentperiod`, `scholar`, `discount`) VALUES
-(1, '20151000', 'Marvyn John', 'Atin', 'Casao', '20', '1997-11-16', 'Male', '#149 Tulay, Ibaan, Batangas', 'Putatan Muntinlupa City', '09154095632', '1', 'marvynjohnatin@gmail.com', 'Highschool', '8', '', '', 'No', '1451500_700507843300899_1312591366_n.jpg', 'Pending', 'PASS', 'password123', 'Activated', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evelyn', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'Elena', 'Casao', 'Casao', '09154095632', 'asd@aasd', 'Housewife', '', '3rd Honor', '10%'),
-(5, '50000000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'No', 'noimage.jpg', 'Pending', 'FAIL', 'itsmorefunatsja', 'Pending', 'asd', 'asd', 'asd', 'sasdas', '09154095632', 'asd@asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `student` (`Id`, `studentnumber`, `fname`, `lname`, `mname`, `age`, `dateofbirth`, `gender`, `address`, `placeofbirth`, `contactno`, `parentaccountid`, `email`, `current_level`, `current_year`, `current_strand`, `current_section`, `status_enrolled`, `stud_pic`, `examgrade`, `examremark`, `examdate`, `password`, `account_status`, `fatherfname`, `fathermname`, `fatherlname`, `fatheroccupation`, `fathercontactno`, `fatheremail`, `motherfname`, `mothermname`, `motherlname`, `motheroccupation`, `mothercontactno`, `motheremail`, `guardianfname`, `guardianmname`, `guardianlname`, `guardiancontactno`, `guardianemail`, `guardianoccupation`, `paymentperiod`, `discounttype`, `discount`, `honorcertificate`, `birthcertificate`, `form137`, `form9`, `goodmoral`, `baptismal`, `admit_status`) VALUES
+(1, '20181000', 'Marvyn', 'Atin', 'Casao', '20', '1997-11-16', 'Male', '#149 Tulay, Ibaan, Batangas', 'Ibaan', '09154095632', '1', 'marvynjohnatin@gmail.com', 'Highschool', '8', 'N/A', '', 'Enrolled', '1451500_700507843300899_1312591366_n.jpg', '95', 'PASS', 0, 'Allforlyadel24', 'Activated', 'Mario', 'Caymo', 'Atin', 'Engineer', '09154095632', 'mario@gmail.com', 'Evelyn', 'Casao', 'Atin', 'Accountant', '09154095632', 'evelyn@gmail.com', 'Elene', 'Casao', 'Casao', '09154095632', 'elena@email', 'Something', '', 'EB_Scholar', '10%', 'Specimen_England_and_Wales_Long_Birth_Certificate.jpg', '1520607817.jpg', 'certificate-of-good-moral-character-1-638.jpg', 'Certificate-of-Honor-Template.jpg', 'Forms.png', 'free-printable-baptism-certificate.jpg', 'Admitted');
 
 -- --------------------------------------------------------
 
@@ -311,36 +346,36 @@ INSERT INTO `subjects` (`subject_ID`, `subject_code`, `subject_name`, `subject_l
 (22, 'PhysEd', 'Physical Education and Heath', 'SHS', '12', '2nd', 'STEM', ''),
 (23, 'GenPhy2', 'General Physics 2', 'SHS', '12', '2nd', 'STEM', ''),
 (24, 'GenBio2', 'General Biology 2', 'SHS', '12', '2nd', 'STEM', ''),
-(25, 'Eng1', 'English 1', 'Elementary', '1', '', '', ''),
-(26, 'Math1', 'Mathematics 1', 'Elementary', '1', '', '', ''),
-(27, 'Fil1', 'Filipino 1', 'Elementary', '1', '', '', ''),
-(28, 'Eng2', 'English 2', 'Elementary', '2', '', '', ''),
-(29, 'Math2', 'Mathematics 2', 'Elementary', '2', '', '', ''),
-(30, 'Fil2', 'Filipino 2', 'Elementary', '2', '', '', ''),
-(31, 'Eng3', 'English 3', 'Elementary', '3', '', '', ''),
-(32, 'Math3', 'Mathematics 3', 'Elementary', '3', '', '', ''),
-(33, 'Fil3', 'Filipino 3', 'Elementary', '3', '', '', ''),
-(34, 'Eng4', 'English 4', 'Elementary', '4', '', '', ''),
-(35, 'Math4', 'Mathematics 4', 'Elementary', '4', '', '', ''),
-(36, 'Fil4', 'Filipino 4', 'Elementary', '4', '', '', ''),
-(37, 'Eng5', 'English 5', 'Elementary', '5', '', '', ''),
-(38, 'Math5', 'Mathematics 5', 'Elementary', '5', '', '', ''),
-(39, 'Fil5', 'Filipino 5', 'Elementary', '5', '', '', ''),
-(40, 'Eng6', 'English 6', 'Elementary', '6', '', '', ''),
-(41, 'Math6', 'Mathematics 6', 'Elementary', '6', '', '', ''),
-(42, 'Fil6', 'Filipino 6', 'Elementary', '6', '', '', ''),
-(43, 'AP1', 'Araling Panlipunan 1', 'JHS', '7', '', '', ''),
-(44, 'TLE1', 'Technology and Livelihood 1', 'JHS', '7', '', '', ''),
-(45, 'Math7', 'Mathematics 7', 'JHS', '7', '', '', ''),
-(46, 'AP2', 'Araling Panlipunan 2', 'JHS', '8', '', '', ''),
-(47, 'TLE2', 'Technology and Livelihood 2', 'JHS', '8', '', '', ''),
-(48, 'Math8', 'Mathematics 8', 'JHS', '8', '', '', ''),
-(49, 'AP3', 'Araling Panlipunan 3', 'JHS', '9', '', '', ''),
-(50, 'TLE3', 'Technology and Livelihood 3', 'JHS', '9', '', '', ''),
-(51, 'Math9', 'Mathematics 9', 'JHS', '9', '', '', ''),
-(52, 'AP4', 'Araling Panlipunan 4', 'JHS', '10', '', '', ''),
-(53, 'TLE4', 'Technology and Livelihood 4', 'JHS', '10', '', '', ''),
-(54, 'Math10', 'Mathematics 10', 'JHS', '10', '', '', '');
+(25, 'Eng1', 'English 1', 'Elementary', '1', '', 'N/A', ''),
+(26, 'Math1', 'Mathematics 1', 'Elementary', '1', '', 'N/A', ''),
+(27, 'Fil1', 'Filipino 1', 'Elementary', '1', '', 'N/A', ''),
+(28, 'Eng2', 'English 2', 'Elementary', '2', '', 'N/A', ''),
+(29, 'Math2', 'Mathematics 2', 'Elementary', '2', '', 'N/A', ''),
+(30, 'Fil2', 'Filipino 2', 'Elementary', '2', '', 'N/A', ''),
+(31, 'Eng3', 'English 3', 'Elementary', '3', '', 'N/A', ''),
+(32, 'Math3', 'Mathematics 3', 'Elementary', '3', '', 'N/A', ''),
+(33, 'Fil3', 'Filipino 3', 'Elementary', '3', '', 'N/A', ''),
+(34, 'Eng4', 'English 4', 'Elementary', '4', '', 'N/A', ''),
+(35, 'Math4', 'Mathematics 4', 'Elementary', '4', '', 'N/A', ''),
+(36, 'Fil4', 'Filipino 4', 'Elementary', '4', '', 'N/A', ''),
+(37, 'Eng5', 'English 5', 'Elementary', '5', '', 'N/A', ''),
+(38, 'Math5', 'Mathematics 5', 'Elementary', '5', '', 'N/A', ''),
+(39, 'Fil5', 'Filipino 5', 'Elementary', '5', '', 'N/A', ''),
+(40, 'Eng6', 'English 6', 'Elementary', '6', '', 'N/A', ''),
+(41, 'Math6', 'Mathematics 6', 'Elementary', '6', '', 'N/A', ''),
+(42, 'Fil6', 'Filipino 6', 'Elementary', '6', '', 'N/A', ''),
+(43, 'AP1', 'Araling Panlipunan 1', 'JHS', '7', '', 'N/A', ''),
+(44, 'TLE1', 'Technology and Livelihood 1', 'JHS', '7', '', 'N/A', ''),
+(45, 'Math7', 'Mathematics 7', 'JHS', '7', '', 'N/A', ''),
+(46, 'AP2', 'Araling Panlipunan 2', 'JHS', '8', '', 'N/A', ''),
+(47, 'TLE2', 'Technology and Livelihood 2', 'JHS', '8', '', 'N/A', ''),
+(48, 'Math8', 'Mathematics 8', 'JHS', '8', '', 'N/A', ''),
+(49, 'AP3', 'Araling Panlipunan 3', 'JHS', '9', '', 'N/A', ''),
+(50, 'TLE3', 'Technology and Livelihood 3', 'JHS', '9', '', 'N/A', ''),
+(51, 'Math9', 'Mathematics 9', 'JHS', '9', '', 'N/A', ''),
+(52, 'AP4', 'Araling Panlipunan 4', 'JHS', '10', '', 'N/A', ''),
+(53, 'TLE4', 'Technology and Livelihood 4', 'JHS', '10', '', 'N/A', ''),
+(54, 'Math10', 'Mathematics 10', 'JHS', '10', '', 'N/A', '');
 
 -- --------------------------------------------------------
 
@@ -431,6 +466,12 @@ ALTER TABLE `parent`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
@@ -475,7 +516,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `academic`
 --
 ALTER TABLE `academic`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `announcements`
@@ -502,6 +543,12 @@ ALTER TABLE `parent`
   MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
@@ -517,7 +564,7 @@ ALTER TABLE `strand`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subjects`

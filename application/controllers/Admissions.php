@@ -7,7 +7,11 @@ class Admissions extends CI_Controller {
             die('Please log in');
         }
         $data['account'] = $this->admission_model->getuserdetails($this->session->userdata['user_id']);
-        $data['parents'] = $this->admission_model->getparents();
+        $data['fathers'] = $this->admission_model->getparents('father');
+        $data['mothers'] = $this->admission_model->getparents('mother');
+        $data['guardians'] = $this->admission_model->getparents();
+        $data['applicants'] = $this->admission_model->getapplicants();
+        $data['strands'] = $this->systemadmin_model->getstrands();
         $this->load->view('templates/header-basic');
         $this->load->view('admission/createstudent',$data);
     }
@@ -21,7 +25,6 @@ class Admissions extends CI_Controller {
         $this->load->view('templates/header-basic');
         $this->load->view('admission/createapplicant',$data);
     }
-
 
     public function createstudent()
     {
@@ -78,7 +81,6 @@ class Admissions extends CI_Controller {
             show_404();
         }
         else {
-            alert('Adding Applicant Success');
             redirect('admission/viewcreateapplicant');
         }
     }
@@ -101,10 +103,10 @@ class Admissions extends CI_Controller {
         $studentid = $this->input->post('studentid');
 
         //Get Parent Id
-        $this->db->select('parentid');
+        $this->db->select('parentaccountid');
         $this->db->where('Id',$studentid);
         $parentdetails =$this->db->get('student')->result_array();
-        $parentid= $parentdetails[0]['parentid'];
+        $parentid= $parentdetails[0]['parentaccountid'];
         $data['parent'] = $this->admission_model->getparentactivation($parentid);
         $data['student'] = $this->admission_model->getstudentactivation($studentid);
         $ch = curl_init();
@@ -145,5 +147,13 @@ class Admissions extends CI_Controller {
         echo $encode;
     }
 
+    public function getappdetails()
+    {
+        //AJAX converted to CI
+        $id = $this->input->post('sid');
+        $array = $this->admission_model->getapplicants($id);
+        $encode = json_encode($array);
+        echo $encode;
+    }
 
 }

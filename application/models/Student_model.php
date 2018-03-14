@@ -16,6 +16,13 @@ class Student_model extends CI_Model{
         return $ret->value;
     }
 
+    public function getinitialpayment(){
+        $this->db->where('settingname','initialpayment');
+        $query = $this->db->get('academic');
+        $ret = $query->row();
+        return $ret->value;
+    }
+
     public function getacademicfulldiscount()
     {
         $this->db->where('settingname','fulldiscount');
@@ -23,6 +30,7 @@ class Student_model extends CI_Model{
         $ret = $query->row();
         return $ret->value;
     }
+
     public function getstart()
     {
         $this->db->where('settingname','startingdate');
@@ -30,6 +38,7 @@ class Student_model extends CI_Model{
         $ret = $query->row();
         return $ret->value;
     }
+
     public function getend()
     {
         $this->db->where('settingname','endingdate');

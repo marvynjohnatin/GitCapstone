@@ -205,7 +205,7 @@ class Paypal extends CI_Controller
     function refund_payment(){
         $refund_amount = $this->input->post('refund_amount');
         $saleId = $this->input->post('sale_id');
-        $paymentValue =  (string) round($refund_amount,2); ;
+        $paymentValue =  (string) round($refund_amount,2);
 
 // ### Refund amount
 // Includes both the refunded amount (to Payer)

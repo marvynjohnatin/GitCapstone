@@ -171,7 +171,7 @@ class Portals extends CI_Controller
         $this->load->view('portals/payment',$data);
     }
 
-     public function viewdetails(){
+    public function viewdetails(){
          if(!isset($this->session->userdata['logged_in']) || $this->session->userdata['accounttype'] != 'Student'){
              die('Please log in');
          }
@@ -179,6 +179,14 @@ class Portals extends CI_Controller
         $year = $this->input->post('currentyear');
         $strand = $this->input->post('strand');
         $data['sy'] = array($this->student_model->getacademicsy());
+        $data['initial'] = array($this->student_model->getinitialpayment());
+        $period = $this->getdaterange();
+        $nummonths = 0;
+        foreach ($period as $dt) {
+            $data['daterange'][] = $dt->format("F");
+            $nummonths++;
+        }
+        $data['nummonths'][] = $nummonths;
         if($payment = 'Full')
         {
             $data['discount'] = array($this->student_model->getacademicfulldiscount());
@@ -236,8 +244,6 @@ class Portals extends CI_Controller
         redirect('login');
     }
 
-
-
     public function test(){
        $this->load->view('portals/smsbalance');
     }
@@ -247,17 +253,12 @@ class Portals extends CI_Controller
         $studno = $this->input->post('studentnumber');
         $total = $this->input->post('totalfee');
         $sy = $this->input->post('schoolyear');
+        $initialamount =$this->input->post('initial');
         $amount = round($total,2);
-        if ($payment = 'Monthly')
+
+        if ($payment == 'Monthly')
         {
-            $startdate = $this->student_model->getstart();
-            $enddate = $this->student_model->getend();
-            $start = new DateTime($startdate);
-            $start->modify('first day of this month');
-            $end = new DateTime($enddate);
-            $end->modify('first day of next month');
-            $interval = DateInterval::createFromDateString('1 month');
-            $period = new DatePeriod($start, $interval, $end);
+            $period = $this->getdaterange();
             $nummonths = 0;
             foreach ($period as $dt) {
                 $data['months'][] = $dt->format("F");
@@ -265,9 +266,14 @@ class Portals extends CI_Controller
             }
             $totalamount = $amount/$nummonths;
             $totalamount = round($totalamount,2);
+            $this->student_model->insertinvoicerecord($studno,$sy,$initialamount,'Initial');
             foreach ($data['months'] as $month){
                 $this->student_model->insertinvoicerecord($studno,$sy,$totalamount,$month);
             }
+        }
+        if ($payment == 'Full')
+        {
+                $this->student_model->insertinvoicerecord($studno,$sy,$total,'Upon Enrollment');
         }
         redirect('portals/payment');
     }
@@ -284,6 +290,17 @@ class Portals extends CI_Controller
     public function paymentsuccess()
     {
         $this->load->view('portals/success');
+    }
+
+    public function getdaterange(){
+        $startdate = $this->student_model->getstart();
+        $enddate = $this->student_model->getend();
+        $start = new DateTime($startdate);
+        $start->modify('first day of this month');
+        $end = new DateTime($enddate);
+        $end->modify('first day of next month');
+        $interval = DateInterval::createFromDateString('1 month');
+        return new DatePeriod($start, $interval, $end);
     }
 
 }

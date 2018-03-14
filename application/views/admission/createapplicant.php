@@ -69,7 +69,7 @@
                             <a href="viewapplicant">View Applicants</a>
                         </li>
                         <li class="active">
-                            <a href="createapplicant">Create Applicant</a>
+                            <a href="viewcreateapplicant">Create Applicant</a>
                         </li>
                     </ul>
                 </li>

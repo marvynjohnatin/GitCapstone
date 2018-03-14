@@ -61,18 +61,27 @@
         <div class="menu">
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
-                <li>
-                    <a href="../../index.html">
-                        <i class="material-icons">home</i>
-                        <span>Home</span>
-                    </a>
-                <li class="active">
+                <li class="">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_list</i>
                         <span>Students</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
+                            <a href="viewapplicant">View Applicants</a>
+                        </li>
+                        <li class="">
+                            <a href="viewcreateapplicant">Create Applicant</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">view_list</i>
+                        <span>Students</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li class="">
                             <a href="addstudent">Create New</a>
                         </li>
                         <li class="active">

@@ -35,128 +35,168 @@ class Admission_model extends CI_Model
 
     public function createstudent($post_image)
     {
+        date_default_timezone_set('Asia/Manila');
+        $admissionyear = date('Y');
+        $applicantid = $this->input->post('appid');
+        $primaryrole = $this->input->post('primaryrole');
+        $fatherid= $this->input->post('fatherid');
+        $motherid= $this->input->post('motherid');
+        $guardianid= $this->input->post('guardianid');
+        $studentnumber = str_pad($admissionyear.$applicantid, 8, "0");
+        $studentpassword = $this->generateRandomString();
+        $data = array(
+            'fname' => $this->input->post('fname'),
+            'lname' => $this->input->post('lname'),
+            'mname' => $this->input->post('mname'),
+            'age' => $this->input->post('age'),
+            'dateofbirth' => $this->input->post('birthday'),
+            'gender' => $this->input->post('gender'),
+            'address' => $this->input->post('address'),
+            'placeofbirth' => $this->input->post('birthplace'),
+            'contactno' => $this->input->post('contactno'),
+            'email' => $this->input->post('email'),
+            'current_level' => $this->input->post('level'),
+            'current_year' => $this->input->post('grade'),
+            'current_strand' => $this->input->post('strand'),
+            'status_enrolled' => 'No',
+            'studentnumber' =>$studentnumber ,
+            'password' => $studentpassword,
+            'account_status' => 'Pending',
+            'stud_pic' => $post_image,
+            'examgrade' => $this->input->post('examgrade'),
+            'examremark' => $this->input->post('examremark'),
+            'examdate' => $this->input->post('examdate'),
+            'fatherfname' => $this->input->post('fatherfname'),
+            'fathermname' => $this->input->post('fathermname'),
+            'fatherlname' => $this->input->post('fatherlname'),
+            'fathercontactno' => $this->input->post('fathercontactno'),
+            'fatheremail' => $this->input->post('fatheremail'),
+            'fatheroccupation' => $this->input->post('fatheroccupation'),
+            'motherfname' => $this->input->post('motherfname'),
+            'mothermname' => $this->input->post('mothermname'),
+            'motherlname' => $this->input->post('motherlname'),
+            'mothercontactno' => $this->input->post('mothercontactno'),
+            'motheremail' => $this->input->post('motheremail'),
+            'motheroccupation' => $this->input->post('motheroccupation'),
+            'guardianfname' => $this->input->post('guardianfname'),
+            'guardianmname' => $this->input->post('guardianmname'),
+            'guardianlname' => $this->input->post('guardianlname'),
+            'guardiancontactno' => $this->input->post('guardiancontactno'),
+            'guardianemail' => $this->input->post('guardianemail'),
+            'guardianoccupation' => $this->input->post('guardianoccupation')
+        );
+        $this->db->where('Id',$applicantid);
+        $this->db->update('student', $data);
 
-                $fname = $this->input->post('fname');
-                $mname = $this->input->post('mname');
-                $lname = $this->input->post('lname');
-                $admission = $this->input->post('admission');
-                $age = $this->input->post('age');
-                $birthday = $this->input->post('birthday');
-                $gender = $this->input->post('gender');
-                $address = $this->input->post('address');
-                $birthplace = $this->input->post('birthplace');
-                $contactno = $this->input->post('contactno');
-                $email = $this->input->post('email');
-                $level = $this->input->post('level');
-                $year = $this->input->post('grade');
-                $examgrade = $this->input->post('examgrade');
-                $examremark = $this->input->post('examremark');
-                $fatherfname = $this->input->post('fatherfname');
-                $fathermname = $this->input->post('fathermname');
-                $fatherlname = $this->input->post('fatherlname');
-                $fathercontactno = $this->input->post('fathercontactno');
-                $fatheremail = $this->input->post('fatheremail');
-                $fatheroccupation = $this->input->post('fatheroccupation');
-                $motherfname = $this->input->post('motherfname');
-                $mothermname = $this->input->post('mothermname');
-                $motherlname = $this->input->post('motherlname');
-                $mothercontactno = $this->input->post('mothercontactno');
-                $motheremail = $this->input->post('motheremail');
-                $motheroccupation = $this->input->post('motheroccupation');
-                $guardianfname = $this->input->post('guardianfname');
-                $guardianmname = $this->input->post('guardianmname');
-                $guardianlname = $this->input->post('guardianlname');
-                $guardiancontactno = $this->input->post('guardiancontactno');
-                $guardianemail = $this->input->post('guardianemail');
-                $guardianoccupation = $this->input->post('guardianoccupation');
-                $parentid = $this->input->post('accountid');
-                $accountfname = $this->input->post('accountfname');
-                $accountmname = $this->input->post('accountmname');
-                $accountlname = $this->input->post('accountlname');
-                $accountcontactno = $this->input->post('accountcontactno');
-                $accountemail = $this->input->post('accountemail');
-
-                if($parentid == '') {
-                    //Generate UserName
-                    $user = strtolower($accountfname . $accountlname);
-                    $username = str_replace(' ', '', $user);
-                   //Checking of existing username
-                    $this->db->where('username',$username);
-                    $query = $this->db->get('parent');
-                    $count = $query->num_rows();
-                    //if there is existing username
-                    if($count > 0 )
-                    {
-                        $count+1;
-                        $username = $username.$count;
-                    }
-                    $account = array(
-                        'fname' => $accountfname,
-                        'lname' => $accountlname,
-                        'mname' => $accountmname,
-                        'contactno' => $accountcontactno,
-                        'email' => $accountemail,
-                        'username' => $username,
-                        'password' => 'itsmorefunatsja'
-                    );
-                    //Creating Query For adding Parent
-                    $this->db->insert('parent', $account);
-                    //Assigning of ID to variable to use in record of student
-                    $parentid = $this->db->insert_id();
-                }
-
-                $data = array(
-                    'fname' => $fname,
-                    'lname' => $lname,
-                    'mname' => $mname,
-                    'age' => $age,
-                    'dateofbirth' => $birthday,
-                    'gender' => $gender,
-                    'address' => $address,
-                    'placeofbirth' => $birthplace,
-                    'parentid' => $parentid,
-                    'contactno' => $contactno,
-                    'email' => $email,
-                    'current_level' => $level,
-                    'current_year' => $year,
-                    'status_enrolled' => 'No',
-                    'password' => 'itsmorefunatsja',
-                    'account_status' => 'Pending',
-                    'stud_pic' => $post_image,
-                    'examgrade' => 'Pending',
-                    'examremark' => $examremark,
-                    'fatherfname' => $fatherfname,
-                    'fathermname' => $fathermname,
-                    'fatherlname' => $fatherlname,
-                    'fathercontactno' => $fathercontactno,
-                    'fatheremail' => $fatheremail,
-                    'fatheroccupation' => $fatheroccupation,
-                    'motherfname' => $motherfname,
-                    'mothermname' => $mothermname,
-                    'motherlname' => $motherlname,
-                    'mothercontactno' => $mothercontactno,
-                    'motheremail' => $motheremail,
-                    'motheroccupation' => $motheroccupation,
-                    'guardianfname' => $guardianfname,
-                    'guardianmname' => $guardianmname,
-                    'guardianlname' => $guardianlname,
-                    'guardiancontactno' => $guardiancontactno,
-                    'guardianemail' => $guardianemail,
-                    'guardianoccupation' => $guardianoccupation
+        if($fatherid == '') {
+            $fatherusername = $this->usernamechecker($this->input->post('fatherfname'), $this->input->post('fatherlname'));
+            $fatherpassword = $this->generateRandomstring();
+            $fatherarr = array(
+                'parentrole' => 'mother',
+                'fname' => $this->input->post('fatherfname'),
+                'mname' => $this->input->post('fathermname'),
+                'lname' => $this->input->post('fatherlname'),
+                'address' => $this->input->post('fatheraddress'),
+                'contactno' => $this->input->post('fathercontactno'),
+                'email' => $this->input->post('fatheremail'),
+                'occupation' => $this->input->post('fatheroccupation'),
+                'username' => $fatherusername,
+                'password' => $fatherpassword
                 );
-                $query = $this->db->insert('student', $data);
-                $lastid = $this->db->insert_id();
-                $formedid = $admission . $lastid;
-                $data = array(
-                    'studentnumber' => str_pad($formedid, 8, "0")
+            if($primaryrole == 'father') {
+                $this->db->insert('parent', $fatherarr);
+                $fatherid = $this->db->insert_id();
+            }
+        }
+
+        if($motherid == '') {
+            $motherusername = $this->usernamechecker($this->input->post('motherfname'), $this->input->post('motherlname'));
+            $motherpassword = $this->generateRandomstring();
+            $motherarr = array(
+                'parentrole' => 'mother',
+                'fname' => $this->input->post('motherfname'),
+                'mname' => $this->input->post('mothermname'),
+                'lname' => $this->input->post('motherlname'),
+                'address' => $this->input->post('motheraddress'),
+                'contactno' => $this->input->post('mothercontactno'),
+                'email' => $this->input->post('motheremail'),
+                'occupation' => $this->input->post('motheroccupation'),
+                'username' => $motherusername,
+                'password' => $motherpassword
                 );
-                $this->db->where('id', $lastid);
-                $this->db->update('student', $data);
+            if($primaryrole == 'mother') {
+                $this->db->insert('parent', $motherarr);
+                $motherid = $this->db->insert_id();
+            }
+        }
+
+        if($guardianid == '') {
+            $guardianusername = $this->usernamechecker($this->input->post('guardianfname'), $this->input->post('guardianlname'));
+            $guardianpassword = $this->generateRandomstring();
+            $guardianarr = array(
+                'parentrole' => 'guardian',
+                'fname' => $this->input->post('guardianfname'),
+                'mname' => $this->input->post('guardianmname'),
+                'lname' => $this->input->post('guardianlname'),
+                'address' => $this->input->post('guardianaddress'),
+                'contactno' => $this->input->post('guardiancontactno'),
+                'email' => $this->input->post('guardianemail'),
+                'occupation' => $this->input->post('guardianoccupation'),
+                'username' => $guardianusername,
+                'password' => $guardianpassword
+                );
+            if($primaryrole == 'guardian')
+            {
+            $this->db->insert('parent', $guardianarr);
+            $guardianid = $this->db->insert_id();
+            }
+        }
+
+        $parentid = '';
+        if($primaryrole == 'father')
+        {
+            $parentid = $fatherid;
+        }
+        elseif($primaryrole == 'mother')
+        {
+            $parentid = $motherid;
+        }
+        elseif($primaryrole == 'guardian')
+        {
+            $parentid = $guardianid;
+        }
+        $parentarr = array(
+            'parentaccountid' => $parentid,
+            'admit_status' => 'Admitted'
+        );
+        $this->db->where('Id',$applicantid);
+        $this->db->update('student', $parentarr);
     }
 
-    public function getparents(){
-        $query = $this->db->get('parent');
-        return $query->result_array();
+    public function getparents($roles=false){
+        if($roles !== false) {
+            $this->db->where('parentrole',$roles);
+            $query = $this->db->get('parent');
+            return $query->result_array();
+        }
+        else
+        {
+            $query = $this->db->get('parent');
+            return $query->result_array();
+        }
+    }
+
+    public function getapplicants($id=false){
+        $this->db->where('admit_status', 'Applicant');
+        if($id === false) {
+            $query = $this->db->get('student');
+            return $query->result_array();
+        }
+        else{
+            $this->db->where('Id', $id);
+            $query = $this->db->get('student');
+            return $query->result_array();
+        }
     }
 
     public function getparentdetails($id){
@@ -171,8 +211,6 @@ class Admission_model extends CI_Model
         $query = $this->db->get('student');
         return $query->result_array();
     }
-
-
 
     public function getparentactivation($parentid){
         $this->db->where('Id',$parentid);
@@ -192,5 +230,35 @@ class Admission_model extends CI_Model
         );
         $this->db->where('Id', $studentid);
         $this->db->update('student', $data);
+    }
+
+    public function generateRandomString($length = 6) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    public function usernamechecker($fname,$lname) {
+        $user = strtolower($fname . $lname);
+        $username = str_replace(' ', '', $user);
+        //Checking of existing username
+        $this->db->where('username',$username);
+        $query = $this->db->get('parent');
+        $count = $query->num_rows();
+        //if there is existing username
+        if($count > 0 )
+        {
+            $count+1;
+        }
+        else
+        {
+            $count = '';
+        }
+        $username = $username.$count;
+        return $username;
     }
 }

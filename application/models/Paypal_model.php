@@ -16,10 +16,18 @@ class Paypal_model extends CI_Model {
         date_default_timezone_set("Asia/Manila");
         $datetime = date('F j, Y g:i:a  ');
         $data = array(
-            'paid_status' => 'Yes',
-            'paymentmode' => 'paypal',
-            'payment_date' => $datetime
+                'paid_status' => 'Yes',
+                'paymentmode' => 'paypal',
+                'payment_date' => $datetime
         );
+        if($itemdescription == 'Initial' || 'Upon Enrollment') {
+            $update = array(
+                'status_enrolled' => 'Enrolled'
+            );
+        $this->db->where('studentnumber',$this->session->userdata['studentnumber']);
+        $this->db->update('student', $update);
+        }
+
         $this->db->where('Id',$itemid);
         $this->db->update('payment', $data);
 	}

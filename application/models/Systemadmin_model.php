@@ -56,18 +56,14 @@ class Systemadmin_model extends CI_Model{
             'strand' => $this->input->post('strand'),
             'amount' => $this->input->post('amount')
         );
-
         //insert process
         $this->db->insert('fee',$fields);
-
-
-
-
-
     }
 
     public function getstrands(){
         $query = $this->db->get('strand');
         return $query->result_array();
     }
+
+
 }

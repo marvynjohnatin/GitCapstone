@@ -181,8 +181,8 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             Scholar Type:
-                                            <font color = "green"><b><?php echo $results['scholar'];?></b></font>
-                                            <input type="hidden" name="scholar" value="<?php echo $results['scholar'];?>" ?>
+                                            <font color = "green"><b><?php echo $results['discounttype'];?></b></font>
+                                            <input type="hidden" name="scholar" value="<?php echo $results['discounttype'];?>" ?>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                                         <div class="form-line">
                                             Scholarship Discount:
                                             <font color = "green"><b><?php echo $results['discount'];?></b></font>
-                                            <input type="hidden" name="payment" value="<?php echo $results['discount'];?>" ?>
+                                            <input type="hidden" name="discount" value="<?php echo $results['discount'];?>" ?>
 
                                         </div>
                                     </div>
@@ -260,8 +260,16 @@
                                         <th>Amount</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <>
+                                    <!-- Initial Payment -->
+                                    <input type="hidden" name="initial" value="<?php echo $initial[0]?>">
                                     <?php $total = 0; ?>
+                                    <tr>
+                                    <td>Initial Payment</td>
+                                    <td>Php <?php echo number_format($initial[0], 2, '.', ',');?></td>
+                                    <?php $total = $total + $initial[0] ?>
+                                    </tr>
+                                    <!-- End Initial Payment -->
                                     <?php foreach ($fees as $fee): ?>
                                         <tr>
                                             <td><?php echo $fee['fee_description'] ?></td>
@@ -286,29 +294,83 @@
 
                             Deduction:<?php $deducted = ($total*$percent)+$disc; echo 'Php '.number_format($deducted, 2, '.', ',') ?><br>
                             <strong>Total:<?php $total_fee = $total-$deducted; echo 'Php '.number_format($total_fee, 2, '.', ',') ?><br></strong>
-                            <input type="hidden" value="<?php echo $total_fee?>" name="totalfee"/>
+                            <input id="total" type="hidden" value="<?php echo $total_fee?>" name="totalfee"/>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit">Enroll Now</button>
+            <button type="submit">Submit</button>
             <?php echo form_close()?>
+            <button type="button" data-toggle="modal" data-target="#activateModal" value="<?php echo $total_fee?>" id="buttonmodal">Breakdown of Payment</button>
 
 
 
+            <!-- MODAL -->
+            <div class="modal fade" id="activateModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style = "background-color:red;">
+                            <h4 class="modal-title" id="defaultModalLabel"><font color = "white">Breakdown of Payment</font></h4>
+                            <br>
+                        </div>
+                        <div class="modal-body">
+                            <div class="body">
+                                <div class="row clearfix">
+                                    <table id="breakdown">
+                                        <tbody>
+                                        </tbody>
+                                    </table>
 
-
-
-
-
-
-
-
-
-
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style = "background-color:red;" >
+                            <button type="button" id="buttonclose" class="btn btn-link waves-effect" data-dismiss="modal"><font color = "orange">CLOSE</font></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- endMODAL -->
         </div>
     </section>
 
-   
+
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#buttonmodal').click(function() {
+            var sid = $(this).val();
+            var ctr = 0;
+            <?php if ($this->input->post('payment') == 'Monthly'):?>
+            $('#breakdown tbody').append('<tr class="child"><td>Initial Payment</td><td>Php <?php echo number_format($initial[0], 2, ".", ",");?></td></tr>');
+            <?php foreach ($daterange as $date):?>
+            ctr = ctr+1;
+            <?php endforeach;?>
+            var fee = sid/ctr;
+            var feevar = parseFloat(Math.round(fee * 100) / 100).toFixed(2);
+            var total =  parseFloat(feevar).toLocaleString('en');
+            <?php foreach ($daterange as $date):?>
+            $('#breakdown tbody').append('<tr class="child"><td>End of <?php echo $date?>:</td><td>Php '+total+'</td></tr>');
+            <?php endforeach;?>
+            <?php endif;?>
+            <?php if ($this->input->post('payment') == 'Full'):?>
+            var fee = sid;
+            var feevar = parseFloat(Math.round(fee * 100) / 100).toFixed(2);
+            var total =  parseFloat(feevar).toLocaleString('en');
+            $('#breakdown tbody').append('<tr class="child"><td>Upon Enrollment:</td><td>Php '+total+'</td></tr>');
+            <?php endif;?>
+
+        });
+
+        $('#buttonclose').click(function() {
+            var table = document.getElementById("breakdown");
+            for(var i = table.rows.length - 1; i >= 0; i--)
+            {
+                table.deleteRow(i);
+            }
+        });
+    });
+
+</script>
 

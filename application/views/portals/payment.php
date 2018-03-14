@@ -173,7 +173,7 @@
                                     <thead>
                                     <tr>
                                         <th>Detail Number</th>
-                                        <th>Month</th>
+                                        <th>Due</th>
                                         <th>Amount</th>
                                         <th>Action</th>
                                     </tr>
@@ -182,8 +182,12 @@
                                                 <?php foreach ($invoices as $invoice):?>
                                                     <tr>
                                                         <td><?php echo $invoice['Id']?></td>
+                                                        <?php if ($invoice['month'] == 'Initial' ||$invoice['month'] == 'Upon Enrollment'): ?>
                                                         <td><?php echo $invoice['month']?></td>
-                                                        <td><?php echo $invoice['amount']?></td>
+                                                        <?php else:?>
+                                                        <td><?php echo 'End of '.$invoice['month']?></td>
+                                                        <?php endif;?>
+                                                        <td><?php echo 'Php '.number_format($invoice['amount'], 2, '.', ',');?></td>
                                                         <td>
                                                             <button type="button" data-toggle="modal" data-target="#activateModal" class="btn bg-green waves-effect" id="paymentbutton<?php echo $invoice['Id']?>" value="<?php echo $invoice['Id']?>">
                                                                 <i class="material-icons">payment</i>
