@@ -26,7 +26,7 @@ $route['logout'] = 'portals/logout';
 
 //========================================================================>
 //Registrar Routes
-$route['registrar/studentlist'] = 'registrars/viewstudentlist';
+$route['registrar/studentlist'] = 'registrars/studentlist';
 $route['registrars/create'] = 'registrars/createstudentview';
 $route['registrars/docreate'] = 'registrars/docreate';
 $route['registrar/logout'] = 'registrars/logout';
