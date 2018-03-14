@@ -140,6 +140,7 @@
                                     <i class="material-icons">print</i>
                                     <span>Print</span>
                                     </button>
+                                     </a>
                                     <br>
                                     <br>
                                 </table>

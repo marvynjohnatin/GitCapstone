@@ -62,6 +62,10 @@ $route['systemadmin/subjects'] = 'systemadmins/subjects';
 $route['systemadmin/managefees'] = 'systemadmins/managefees';
 $route['systemadmin/addfee'] = 'systemadmins/addfee';
 $route['systemadmin/report'] = 'systemadmins/index';
+$route['systemadmin/sendtextmessage'] = 'systemadmins/viewsendtextmessage';
+$route['systemadmin/sending'] = 'systemadmins/sending';
+$route['systemadmin/createschedule'] = 'systemadmins/viewcreateschedule';
+$route['systemadmin/sectionschedule/(:any)'] = 'systemadmins/sectionschedule/$1';
 //========================================================================>
 
 //Admission Routes

@@ -32,14 +32,17 @@ class Systemadmin_model extends CI_Model{
     		'subject_strand' => $this->input->post('course'),
     		'coordinator' => $this->input->post('coordinator')
     	);
-
     	//insert process 
-    	$this->db->insert('subject',$fields);
-
+    	$this->db->insert('subjects',$fields);
     }
 
     public function getsubjects(){
         $query = $this->db->get('subjects');
+        return $query->result_array();
+    }
+
+    public function getsections(){
+        $query = $this->db->get('section');
         return $query->result_array();
     }
 
@@ -64,6 +67,18 @@ class Systemadmin_model extends CI_Model{
         $query = $this->db->get('strand');
         return $query->result_array();
     }
+
+    public function getstudentstosend($level){
+
+        $this->db->select('contactno');
+        if($level != 'All') {
+            $this->db->where('current_level', $level);
+        }
+        $query = $this->db->get('student');
+        return $query->result_array();
+    }
+
+
 
 
 }
