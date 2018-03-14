@@ -41,7 +41,11 @@ class Systemadmin_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function getsections(){
+    public function getsections($id=false){
+        if($id !== false)
+        {
+            $this->db->where('Id',$id);
+        }
         $query = $this->db->get('section');
         return $query->result_array();
     }

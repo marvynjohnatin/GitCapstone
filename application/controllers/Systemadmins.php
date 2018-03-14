@@ -25,9 +25,14 @@ class Systemadmins extends CI_Controller {
         $this->load->view('systemadmin/createschedule',$data);
     }
 
-    public function sectionschedule($id = false)
+    public function sectionscheduleview($id = false)
     {
+        $data['account'] = $this->systemadmin_model->getuserdetails($this->session->userdata['user_id']);
+        $data['sections'] = $this->systemadmin_model->getsections($id);
 
+        $this->load->view('templates/header-basic');
+        $this->load->view('templates/navbar-systemadmin');
+        $this->load->view('systemadmin/scheduling',$data);
     }
 
 	public function index()

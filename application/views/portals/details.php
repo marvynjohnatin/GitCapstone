@@ -270,29 +270,35 @@
                                     <?php $total = $total + $initial[0] ?>
                                     </tr>
                                     <!-- End Initial Payment -->
+                                    <?php $totaltuition = 0; ?>
                                     <?php foreach ($fees as $fee): ?>
                                         <tr>
                                             <td><?php echo $fee['fee_description'] ?></td>
                                             <td>Php <?php echo number_format($fee['amount'], 2, '.', ',');?></td>
                                         </tr>
-                                    <?php $total = $total + $fee['amount']; ?>
+                                        <?php $total = $total + $fee['amount']; ?>
+                                    <?php if($fee['fee_description'] == 'Tuition'): ?>
+                                        hi
+                                    <?php $totaltuition = $totaltuition + $fee['amount']; ?>
+                                    <?php endif;?>
                                     <?php endforeach;?>
                                     </tbody>
                                 </table>
                             </div>
+
                             Overall Fee:<?php echo 'Php '.number_format($total, 2, '.', ',')?><br>
                             <?php $percent = str_replace('%', '', $results['discount']) / 100;?>
-                            Discount:<?php echo $results['discount']?><br>
+                            Discount(Apply only in tuition fee):<?php echo $results['discount']?><br>
                             <?php $disc=0 ?>
                             <?php if($this->input->post('payment') == 'Full'){
-                                echo "Fully Paid Discount:".$discount[0]*100;
+                                echo "Fully Paid Discount(Apply only in tuition fee):".$discount[0]*100;
                                 echo "%<br>";
-                                $disc = $discount[0] * $total;
+                                $disc = $discount[0] * $totaltuition;
                             }
                             ?>
 
 
-                            Deduction:<?php $deducted = ($total*$percent)+$disc; echo 'Php '.number_format($deducted, 2, '.', ',') ?><br>
+                            Deduction:<?php $deducted = ($totaltuition*$percent)+$disc; echo 'Php '.number_format($deducted, 2, '.', ',') ?><br>
                             <strong>Total:<?php $total_fee = $total-$deducted; echo 'Php '.number_format($total_fee, 2, '.', ',') ?><br></strong>
                             <input id="total" type="hidden" value="<?php echo $total_fee?>" name="totalfee"/>
                         </div>

@@ -127,7 +127,6 @@
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
                                 <li role="presentation" class="active"><a href="#details" data-toggle="tab">APPLICANT DETAILS</a></li>
                                 <li role="presentation"><a href="#requirements" data-toggle="tab">ACADEMY REQUIREMENTS</a></li>
-                         
                             </ul>
 
                             <!-- Tab panes -->
